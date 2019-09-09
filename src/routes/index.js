@@ -16,19 +16,20 @@ export default [
                 render: () => (
                     <Redirect to={"/recommend"} />
                 )
-            }
+            },
+            {
+                path: '/recommend',
+                component: Recommend
+            },
+            {
+                path: '/singers',
+                component: Singers
+            },
+            {
+                path: '/rank',
+                component: Rank
+            },
         ]
     },
-    {
-        path: '/recommend',
-        component: Recommend
-    },
-    {
-        path: '/singers',
-        component: Singers
-    },
-    {
-        path: '/rank',
-        component: Rank
-    },
+    
 ]
