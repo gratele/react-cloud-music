@@ -10,16 +10,18 @@ export const SliderContainer = styled.div`
   background: white;
   .before{
     position: absolute;
-    top: 0;
-    height: 60%;
+    top: -300px;
+    height: 400px;
     width: 100%;
     background: ${style["theme-color"]};
+    z-index: 1;
   }
   .slider-container{
     position: relative;
     height: 160px;
     overflow: hidden;
     margin: auto;
+    border-radius: 6px;
     .slider-nav{
       position: absolute;
       display: block;

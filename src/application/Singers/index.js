@@ -14,6 +14,7 @@ import Scroll from "../../baseUI/scroll/index";
 import  LazyLoad, {forceCheck} from 'react-lazyload';
 import Loading from '../../baseUI/loading/index';
 import { renderRoutes } from 'react-router-config';
+import { withRouter } from 'react-router-dom';
 
 function Singers(props){
   const scrollRef = useRef(null);
@@ -108,7 +109,7 @@ const mapStateToProps = (state) => ({
   pullUpLoading: state.getIn(['singers', 'pullUpLoading']),
   pullDownLoading: state.getIn(['singers', 'pullDownLoading']),
   pageCount: state.getIn(['singers', 'pageCount']),
-  // songsCount: state.getIn(['player', 'playList']).size
+  songsCount: state.getIn(['player', 'playList']).size
 });
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -150,4 +151,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };   
 
-export default connect(mapStateToProps, mapDispatchToProps)(Singers);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Singers));
