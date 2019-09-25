@@ -6,7 +6,7 @@ import Scroll from "../../baseUI/scroll/index";
 import { HEADER_HEIGHT } from "./../../api/config";
 import { getSingerInfo } from "./store/actionCreators";
 import { connect } from "react-redux";
-import Loading from "./../../baseUI/loading/index";
+import Loading from './../../baseUI/loading-v2/index'
 import { EnterLoading } from "../Singers/style";
 import { changeEnterLoading } from "./store/actionCreators";
 import { CSSTransition } from "react-transition-group";
@@ -19,17 +19,23 @@ function Singer(props) {
 
   const OFFSET = 5;
 
-  const { 
-    artist: immutableArtist, 
-    songs: immutableSongs, 
+  const {
+    artist: immutableArtist,
+    songs: immutableSongs,
     loading,
     songsCount
   } = props;
 
   const { getSingerDataDispatch } = props;
 
-  const artist = immutableArtist.toJS();
-  const songs = immutableSongs.toJS();
+
+  let artist = {};
+  let songs = [];
+
+  if (!loading) {
+    artist = immutableArtist.toJS();
+    songs = immutableSongs.toJS();
+  }
 
   const collectButton = useRef();
   const imageWrapper = useRef();

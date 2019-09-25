@@ -12,6 +12,11 @@ export const changeRecommendList = (data) => ({
   data: fromJS(data)
 });
 
+export const errorAction = (data) => ({
+  type: actionTypes.CHANGE_RECOMMEND_LIST_ERROR,
+  data
+})
+
 export const changeEnterLoading = (data) => ({
   type: actionTypes.CHANGE_ENTER_LOADING,
   data
@@ -24,7 +29,7 @@ export const getBannerList = () => {
       dispatch(action);
     }).catch(() => {
       console.log("轮播图数据传输错误");
-    }) 
+    })
   }
 };
 
@@ -35,6 +40,7 @@ export const getRecommendList = () => {
       dispatch(changeEnterLoading(false));
     }).catch(() => {
       console.log("推荐歌单数据传输错误");
+      dispatch(errorAction(true))
     });
   }
 };

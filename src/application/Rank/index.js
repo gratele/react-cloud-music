@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { getRankList } from './store/actionCreators'
-import Loading from '../../baseUI/loading';
+import Loading from '../../baseUI/loading-v2';
 import {
   List,
   ListItem,

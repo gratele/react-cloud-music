@@ -5,3 +5,4 @@ export const CHANGE_PAGE_COUNT = 'home/singers/PAGE_COUNT';
 export const CHANGE_ENTER_LOADING = 'home/singers/ENTER_LOADING';
 export const CHANGE_PULLUP_LOADING = 'home/singers/PULLUP_LOADING';
 export const CHANGE_PULLDOWN_LOADING = 'home/singers/PULLDOWN_LOADING';
+export const ERROR = 'home/singers/ERROR';

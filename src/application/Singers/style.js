@@ -57,7 +57,14 @@ export const ListItem = styled.div`
 export const EnterLoading = styled.div`
   position: fixed;
   left: 0; right: 0; top: 0; bottom: 0;
-  width: 100px;
+  width: 120px;
   height: 100px;
   margin: auto;
+`
+export const Error = styled.div`
+  height: 10px;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 10px;
 `

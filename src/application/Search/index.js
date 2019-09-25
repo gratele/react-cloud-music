@@ -1,13 +1,13 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import SearchBox from './../../baseUI/search-box/index';
 import Scroll from './../../baseUI/scroll/index';
 import { Container, ShortcutWrapper, HotKey } from './style';
 import { connect } from 'react-redux';
 import { getHotKeyWords, changeEnterLoading, getSuggestList } from './store/actionCreators';
 import { List, ListItem, EnterLoading } from './../Singers/style';
-import LazyLoad, {forceCheck} from 'react-lazyload';
+import LazyLoad, { forceCheck } from 'react-lazyload';
 import { CSSTransition } from 'react-transition-group';
-import Loading from './../../baseUI/loading/index';
+import Loading from './../../baseUI/loading-v2/index';
 import MusicalNote from '../../baseUI/music-note';
 import { SongItem } from '../Album/style';
 import { getName } from '../../api/utils';
@@ -19,10 +19,10 @@ const Search = (props) => {
   const musicNoteRef = useRef();
 
   const {
-    hotList, 
-    enterLoading, 
-    suggestList: immutableSuggestList, 
-    songsCount, 
+    hotList,
+    enterLoading,
+    suggestList: immutableSuggestList,
+    songsCount,
     songsList: immutableSongsList
   } = props;
 
@@ -38,13 +38,13 @@ const Search = (props) => {
 
   useEffect(() => {
     setShow(true);
-    if(!hotList.length)
+    if (!hotList.length)
       getHotKeyWordsDispatch();
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   const renderHotKey = () => {
-    let list = hotList ? hotList.toJS(): [];
+    let list = hotList ? hotList.toJS() : [];
     return (
       <ul>
         {
@@ -59,45 +59,27 @@ const Search = (props) => {
       </ul>
     )
   };
-  
-  // const renderHistoryList = () => {
-  //   return (
-  //     <ul>
-  //       {
-  //         [1,2,3,4,5,6,7,8,9,5,5,5,5,5].map(item => {
-  //           return (
-  //             <li  className="history_item">
-  //               <span className="text">离圣诞节分厘卡士大夫将来肯定</span>
-  //               <span className="icon">
-  //                 <i className="iconfont icon_delete">&#xe600;</i>
-  //               </span>
-  //             </li>
-  //           )
-  //         })
-  //       }
-  //     </ul>
-  //   )
-  // }
+
   const handleQuery = (q) => {
     setQuery(q);
-    if(!q) return;
+    if (!q) return;
     changeEnterLoadingDispatch(true);
     getSuggestListDispatch(q);
   }
 
   const renderSingers = () => {
     let singers = suggestList.artists;
-    if(!singers || !singers.length) return;
+    if (!singers || !singers.length) return;
     return (
       <List>
         <h1 className="title">相关歌手</h1>
         {
           singers.map((item, index) => {
             return (
-              <ListItem key={item.accountId+""+index} onClick={() => props.history.push(`/singers/${item.id}`)}>
+              <ListItem key={item.accountId + "" + index} onClick={() => props.history.push(`/singers/${item.id}`)}>
                 <div className="img_wrapper">
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="singer"/>}>
-                    <img src={item.picUrl} width="100%" height="100%" alt="music"/>
+                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="singer" />}>
+                    <img src={item.picUrl} width="100%" height="100%" alt="music" />
                   </LazyLoad>
                 </div>
                 <span className="name">歌手: {item.name}</span>
@@ -111,17 +93,17 @@ const Search = (props) => {
 
   const renderAlbum = () => {
     let albums = suggestList.playlists;
-    if(!albums || !albums.length) return;
+    if (!albums || !albums.length) return;
     return (
       <List>
         <h1 className="title">相关歌单</h1>
         {
           albums.map((item, index) => {
             return (
-              <ListItem key={item.accountId+""+index} onClick={() => props.history.push(`/album/${item.id}`)}>
+              <ListItem key={item.accountId + "" + index} onClick={() => props.history.push(`/album/${item.id}`)}>
                 <div className="img_wrapper">
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./music.png')} alt="music"/>}>
-                    <img src={item.coverImgUrl} width="100%" height="100%" alt="music"/>
+                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./music.png')} alt="music" />}>
+                    <img src={item.coverImgUrl} width="100%" height="100%" alt="music" />
                   </LazyLoad>
                 </div>
                 <span className="name">歌单: {item.name}</span>
@@ -135,16 +117,16 @@ const Search = (props) => {
 
   const selectItem = (e, id) => {
     getSongDetailDispatch(id);
-    musicNoteRef.current.startAnimation({x:e.nativeEvent.clientX, y:e.nativeEvent.clientY});
+    musicNoteRef.current.startAnimation({ x: e.nativeEvent.clientX, y: e.nativeEvent.clientY });
   }
-  
+
   const searchBack = useCallback(() => {
     setShow(false);
   }, []);
 
   const renderSongs = () => {
     return (
-      <SongItem style={{paddingLeft: "20px"}}> 
+      <SongItem style={{ paddingLeft: "20px" }}>
         {
           songsList.map(item => {
             return (
@@ -152,7 +134,7 @@ const Search = (props) => {
                 <div className="info">
                   <span>{item.name}</span>
                   <span>
-                    { getName(item.artists) } - { item.album.name }
+                    {getName(item.artists)} - {item.album.name}
                   </span>
                 </div>
               </li>
@@ -164,11 +146,11 @@ const Search = (props) => {
   };
 
   return (
-    <CSSTransition 
-      in={show} 
-      timeout={300} 
-      appear={true} 
-      classNames="fly"  
+    <CSSTransition
+      in={show}
+      timeout={300}
+      appear={true}
+      classNames="fly"
       unmountOnExit
       onExited={() => props.history.goBack()}
     >
@@ -205,7 +187,7 @@ const Search = (props) => {
             </div>
           </Scroll>
         </ShortcutWrapper>
-        {enterLoading? <EnterLoading><Loading></Loading></EnterLoading> : null}
+        {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
         <MusicalNote ref={musicNoteRef}></MusicalNote>
       </Container>
     </CSSTransition>

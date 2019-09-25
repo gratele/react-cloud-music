@@ -10,6 +10,7 @@ const StepTwo = props => {
   const [vcode, setVcode] = useState("");
   const [timer, setTimer] = useState(sentPeriod);
   const inputRef = useRef();
+
   useEffect(() => {
     inputRef.current.focus();
     if (timer === 0) {
@@ -21,9 +22,9 @@ const StepTwo = props => {
     theTimer = setInterval(() => {
       setTimer(timer => timer - 1);
     }, 1000);
-    return () => {
-      clearTimeout(theTimer);
-    }
+    // return () => {
+    //   clearTimeout(theTimer);
+    // }
   }, [timer]);
 
   useEffect(() => {
@@ -54,10 +55,10 @@ const StepTwo = props => {
         {timer ? (
           <span>{timer}S</span>
         ) : (
-          <span className="sentBtn" onClick={onClickSentVcode}>
-            重新发送
+            <span className="sentBtn" onClick={onClickSentVcode}>
+              重新发送
           </span>
-        )}
+          )}
       </p>
       <VcodeBox>
         <h2 className="heading-2">验证码:</h2>

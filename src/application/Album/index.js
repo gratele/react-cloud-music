@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from "./style";
 import { CSSTransition } from "react-transition-group";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Scroll from '../../baseUI/scroll/index';
 import style from "../../assets/global-style";
 import { connect } from 'react-redux';
 import { getAlbumList, changePullUpLoading, changeEnterLoading, changeScrollY } from './store/actionCreators';
 import { EnterLoading } from './../Singers/style';
-import Loading from './../../baseUI/loading/index';
-import  Header  from './../../baseUI/header/index';
+import Loading from './../../baseUI/loading-v2/index';
+import Header from './../../baseUI/header/index';
 import AlbumDetail from '../../components/album-detail/index';
 import { HEADER_HEIGHT } from './../../api/config';
 import MusicNote from '../../baseUI/music-note/index';
@@ -27,16 +27,21 @@ function Album(props) {
 
   const { currentAlbum, enterLoading, pullUpLoading, songsCount } = props;
   const { getAlbumDataDispatch, changePullUpLoadingStateDispatch } = props;
-  
-  let currentAlbumJS = currentAlbum.toJS();
+
+  let currentAlbumJS = {};
+
+  if (!enterLoading) {
+    currentAlbumJS = currentAlbum.toJS();
+  }
+
 
   useEffect(() => {
     // setShowStatus(true);
     const pathName = props.history.location.pathname;
     let urlStr = "";
-    if(/recommend/.test(pathName)) {
+    if (/recommend/.test(pathName)) {
       urlStr = "/recommend";
-    } else if(/rank/.test(pathName)) {
+    } else if (/rank/.test(pathName)) {
       urlStr = "/rank";
     }
     getAlbumDataDispatch(id, urlStr);
@@ -45,15 +50,15 @@ function Album(props) {
 
   const handleScroll = (pos) => {
     let minScrollY = -HEADER_HEIGHT;
-    let percent = Math.abs(pos.y/minScrollY);
+    let percent = Math.abs(pos.y / minScrollY);
     let headerDom = headerEl.current;
     // props.changeScrollYDispatch(pos.);
-    if(pos.y < minScrollY) {
+    if (pos.y < minScrollY) {
       headerDom.style.backgroundColor = style["theme-color"];
-      headerDom.style.opacity = Math.min(1, (percent-1)/2);
-      setTitle(currentAlbumJS&&currentAlbumJS.name);
+      headerDom.style.opacity = Math.min(1, (percent - 1) / 2);
+      setTitle(currentAlbumJS && currentAlbumJS.name);
       setIsMarquee(true);
-    } else{
+    } else {
       headerDom.style.backgroundColor = "";
       headerDom.style.opacity = 1;
       setTitle("歌单");
@@ -65,42 +70,42 @@ function Album(props) {
     changePullUpLoadingStateDispatch(true);
     changePullUpLoadingStateDispatch(false);
   };
-  
+
   const handleBack = () => {
     setShowStatus(false);
   };
 
-  const musicAnimation = (x , y) => {
-    musicNoteRef.current.startAnimation({x, y});
+  const musicAnimation = (x, y) => {
+    musicNoteRef.current.startAnimation({ x, y });
   }
 
   return (
-      <CSSTransition 
-        in={showStatus}  
-        timeout={300} 
-        classNames="fly" 
-        appear={true} 
-        unmountOnExit
-        onExited={props.history.goBack}
-      >
-        <Container play={songsCount}>
-          <Header ref={headerEl} title={title} handleClick={handleBack} isMarquee={isMarquee}></Header>
-          {
-            !isEmptyObject(currentAlbumJS) ? (
-              <Scroll 
-                onScroll={handleScroll} 
-                pullUp={handlePullUp} 
-                pullUpLoading={pullUpLoading}
-                bounceTop={false}
-              >
-                <AlbumDetail currentAlbum={currentAlbumJS} pullUpLoading={pullUpLoading} musicAnimation={musicAnimation}></AlbumDetail>
-              </Scroll>
-            ) : null
-          }
-          { enterLoading ?  <EnterLoading><Loading></Loading></EnterLoading> : null}
-          <MusicNote ref={musicNoteRef}></MusicNote>
-        </Container>
-      </CSSTransition>
+    <CSSTransition
+      in={showStatus}
+      timeout={300}
+      classNames="fly"
+      appear={true}
+      unmountOnExit
+      onExited={props.history.goBack}
+    >
+      <Container play={songsCount}>
+        <Header ref={headerEl} title={title} handleClick={handleBack} isMarquee={isMarquee}></Header>
+        {
+          !isEmptyObject(currentAlbumJS) ? (
+            <Scroll
+              onScroll={handleScroll}
+              pullUp={handlePullUp}
+              pullUpLoading={pullUpLoading}
+              bounceTop={false}
+            >
+              <AlbumDetail currentAlbum={currentAlbumJS} pullUpLoading={pullUpLoading} musicAnimation={musicAnimation}></AlbumDetail>
+            </Scroll>
+          ) : null
+        }
+        {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
+        <MusicNote ref={musicNoteRef}></MusicNote>
+      </Container>
+    </CSSTransition>
   );
 }
 // 映射Redux全局的state到组件的props上

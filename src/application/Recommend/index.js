@@ -7,13 +7,13 @@ import Scroll from '../../baseUI/scroll/index';
 import { Content } from './style';
 import { forceCheck } from 'react-lazyload';
 import { renderRoutes } from 'react-router-config';
-import { EnterLoading } from './../Singers/style';
+import { EnterLoading, Error } from './../Singers/style';
 import Loading from '../../baseUI/loading-v2/index';
 
 function Recommend(props) {
-  const { bannerList, recommendList, songsCount, enterLoading } = props;
+  const { bannerList, recommendList, songsCount, enterLoading, recommendListErrorMessage } = props;
 
-  const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
+  const { getBannerDataDispatch, getRecommendListDataDispatch, getErrorDispatch } = props;
 
   useEffect(() => {
     if (!bannerList.size) {
@@ -22,7 +22,6 @@ function Recommend(props) {
     if (!recommendList.size) {
       getRecommendListDataDispatch();
     }
-    // eslint-disable-next-line
   }, []);
 
   const bannerListJS = bannerList ? bannerList.toJS() : [];
@@ -36,9 +35,27 @@ function Recommend(props) {
           <RecommendList recommendList={recommendListJS}></RecommendList>
         </div>
       </Scroll>
-      {enterLoading? <EnterLoading><Loading></Loading></EnterLoading> : null}
-      { renderRoutes(props.route.routes) }
-    </Content> 
+      {enterLoading && !recommendListErrorMessage ? <EnterLoading><Loading></Loading></EnterLoading> : null}
+      {recommendListErrorMessage ?
+        <EnterLoading>
+          <Error>
+            <span onClick={() => {
+              getErrorDispatch()
+              if (!bannerList.size) {
+                getBannerDataDispatch();
+              }
+              if (!recommendList.size) {
+                getRecommendListDataDispatch();
+              }
+            }}
+            >
+              请连接网络后点击屏幕重试
+          </span>
+          </Error>
+        </EnterLoading>
+        : null}
+      {renderRoutes(props.route.routes)}
+    </Content>
   );
 }
 
@@ -46,7 +63,8 @@ const mapStateToProps = (state) => ({
   bannerList: state.getIn(['recommend', 'bannerList']),
   recommendList: state.getIn(['recommend', 'recommendList']),
   songsCount: state.getIn(['player', 'playList']).size,
-  enterLoading: state.getIn(['recommend', 'enterLoading'])
+  enterLoading: state.getIn(['recommend', 'enterLoading']),
+  recommendListErrorMessage: state.getIn(['recommend', 'recommendListErrorMessage'])
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -57,7 +75,9 @@ const mapDispatchToProps = (dispatch) => {
     getRecommendListDataDispatch() {
       dispatch(actionTypes.getRecommendList());
     },
-
+    getErrorDispatch() {
+      dispatch(actionTypes.errorAction(false))
+    }
   }
 };
 
