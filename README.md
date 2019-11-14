@@ -7,7 +7,28 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+打开方式:
+1. 将项目 clone 下来
+```shell
+$ git clone https://github.com/gratele/react-cloud-music.git
+$ cd react-cloud-music
+$ yarn install
+
+// 下载子模块
+$ git submodule update --init --recursive
+//以上步骤未生效的话 直接执行 
+$ git clone https://github.com/Binaryify/NeteaseCloudMusicApi.git
+$ cd NeteaseCloudMusicApi    
+$ yarn install 
+$ cd ../  (注意: 一定要返回到上一层)
+```
+
+2. 运行
+```shell
+$ yarn run start
+```
+
+现在就在本地的3000端口访问了。如果要打包到线上，执行`npm run build`即可。
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

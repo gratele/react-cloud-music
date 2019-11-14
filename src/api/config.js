@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const baseUrl = 'http://47.105.150.105/m-api';
+export const baseUrl = 'http://localhost:3300';
 
 // axios的实例及拦截器配置
 const axiosInstance = axios.create({
@@ -82,109 +82,109 @@ export const categoryTypes = [{
 
 //歌手首字母
 export const alphaTypes = [{
-    key: "A",
-    name: "A"
-  },
-  {
-    key: "B",
-    name: "B"
-  },
-  {
-    key: "C",
-    name: "C"
-  },
-  {
-    key: "D",
-    name: "D"
-  },
-  {
-    key: "E",
-    name: "E"
-  },
-  {
-    key: "F",
-    name: "F"
-  },
-  {
-    key: "G",
-    name: "G"
-  },
-  {
-    key: "H",
-    name: "H"
-  },
-  {
-    key: "I",
-    name: "I"
-  },
-  {
-    key: "J",
-    name: "J"
-  },
-  {
-    key: "K",
-    name: "K"
-  },
-  {
-    key: "L",
-    name: "L"
-  },
-  {
-    key: "M",
-    name: "M"
-  },
-  {
-    key: "N",
-    name: "N"
-  },
-  {
-    key: "O",
-    name: "O"
-  },
-  {
-    key: "P",
-    name: "P"
-  },
-  {
-    key: "Q",
-    name: "Q"
-  },
-  {
-    key: "R",
-    name: "R"
-  },
-  {
-    key: "S",
-    name: "S"
-  },
-  {
-    key: "T",
-    name: "T"
-  },
-  {
-    key: "U",
-    name: "U"
-  },
-  {
-    key: "V",
-    name: "V"
-  },
-  {
-    key: "W",
-    name: "W"
-  },
-  {
-    key: "X",
-    name: "X"
-  },
-  {
-    key: "Y",
-    name: "Y"
-  },
-  {
-    key: "Z",
-    name: "Z"
-  }
+  key: "A",
+  name: "A"
+},
+{
+  key: "B",
+  name: "B"
+},
+{
+  key: "C",
+  name: "C"
+},
+{
+  key: "D",
+  name: "D"
+},
+{
+  key: "E",
+  name: "E"
+},
+{
+  key: "F",
+  name: "F"
+},
+{
+  key: "G",
+  name: "G"
+},
+{
+  key: "H",
+  name: "H"
+},
+{
+  key: "I",
+  name: "I"
+},
+{
+  key: "J",
+  name: "J"
+},
+{
+  key: "K",
+  name: "K"
+},
+{
+  key: "L",
+  name: "L"
+},
+{
+  key: "M",
+  name: "M"
+},
+{
+  key: "N",
+  name: "N"
+},
+{
+  key: "O",
+  name: "O"
+},
+{
+  key: "P",
+  name: "P"
+},
+{
+  key: "Q",
+  name: "Q"
+},
+{
+  key: "R",
+  name: "R"
+},
+{
+  key: "S",
+  name: "S"
+},
+{
+  key: "T",
+  name: "T"
+},
+{
+  key: "U",
+  name: "U"
+},
+{
+  key: "V",
+  name: "V"
+},
+{
+  key: "W",
+  name: "W"
+},
+{
+  key: "X",
+  name: "X"
+},
+{
+  key: "Y",
+  name: "Y"
+},
+{
+  key: "Z",
+  name: "Z"
+}
 ];
 
 //排行榜编号
@@ -226,4 +226,41 @@ export const playMode = {
   sequence: 0,
   loop: 1,
   random: 2
-};
+}
+export const homeIcons = [{
+  text: '私藏推荐',
+  icon: 'home iconxindian'
+}, {
+  text: '私人FM',
+  icon: 'home iconshouyinji'
+}, {
+  text: 'Sati空间',
+  icon: 'home iconyueliang'
+}, {
+  text: '最新电音',
+  icon: 'home iconduodian'
+}, {
+  text: '因乐交友',
+  icon: 'home iconjiaoyou'
+}, {
+  text: '亲子频道',
+  icon: 'home iconertong'
+}, {
+  text: '古典专区',
+  icon: 'home icongangqin'
+}, {
+  text: '跑步FM',
+  icon: 'home iconorder-received'
+}, {
+  text: '小冰电台',
+  icon: 'home iconbingjiling'
+}, {
+  text: '爵士电台',
+  icon: 'home iconyandou'
+}, {
+  text: '驾驶模式',
+  icon: 'home iconqiche'
+}, {
+  text: '编辑',
+  icon: 'home icontoggle'
+}]

@@ -12,14 +12,14 @@ const Login = props => {
   );
 };
 
-// const HomeComponent = lazy(() => import("../application/Home/"));
-// const Home = props => {
-//   return (
-//     <Suspense fallback={null}>
-//       <HomeComponent {...props}></HomeComponent>
-//     </Suspense>
-//   );
-// };
+const HomeComponent = lazy(() => import("../application/Home/"));
+const Home = props => {
+  return (
+    <Suspense fallback={null}>
+      <HomeComponent {...props}></HomeComponent>
+    </Suspense>
+  );
+};
 
 const RecommendComponent = lazy(() => import("../application/Recommend/"));
 const Recommend = props => {
@@ -90,11 +90,17 @@ export default [
             component: Login
           }
         ]
+      },{
+        path: "/home",
+        exact: true,
+        key: "home",
+        component: Home
       },
       {
         path: "/",
         component: HomeLayout,
         routes: [
+          
           {
             path: "/",
             exact: true,

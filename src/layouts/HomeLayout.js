@@ -16,7 +16,20 @@ function Home(props) {
         >
           &#xe65c;
         </span>
-        <span className="title">云音悦</span>
+
+          {/* <NavLink to="/home" activeClassName="selected">
+            <TabItem>
+              <span>我的</span>
+            </TabItem>
+          </NavLink>
+          <NavLink to="/recommend" activeClassName="selected">
+            <TabItem>
+              <span>发现</span>
+            </TabItem>
+          </NavLink> */}
+
+        <span className="title" onClick={() => props.history.push("/home")}>我的</span>
+        <span className="title" onClick={() => props.history.push("/recommend")}>发现</span>
         <span
           className="iconfont search"
           onClick={() => props.history.push("/search")}

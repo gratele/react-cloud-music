@@ -24,13 +24,23 @@ const HeaderContainer = styled.div`
   }
 `
 
+const Marquee = styled.div`
+　white-space: nowrap;　　/* 文字不折行 */
+　overflow:-webkit-marquee;　　/* 只有设置为marquee才有滚动效果 */
+　width: 170px;　　/* 不是必须的 */
+　-webkit-marquee-direction:left;　　/* 文字滚动方向 可选值为left | right | up | down */
+　-webkit-marquee-speed:normal;　　/* 文字滚动速度 可选值为slow | normal | fast */
+　-webkit-marquee-style:scroll;　　/* 文字滚动方式 可选值为scroll | slide | alternate */
+　-webkit-marquee-repetition:1; 　　/* 文字滚动次数 number | infinite ， infinite即无限次循环滚动 */
+`
+
 const Header = React.forwardRef((props, ref) => {
     const { handleClick, title, isMarquee } = props;
     return (
         <HeaderContainer ref={ref}>
             <i className="iconfont back" onClick={handleClick}>&#xe655;</i>
             {
-                isMarquee ? <marquee><h1>{title}</h1></marquee> :
+                isMarquee ? <Marquee><h1>{title}</h1></Marquee> :
                     <h1>{title}</h1>
             }
         </HeaderContainer>
