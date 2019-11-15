@@ -48,15 +48,13 @@ export const TabItem = styled.div`
 export const NavContainer = styled.div`
   box-sizing: border-box;
   position: fixed;
-  top: 95px;
+  top: 75px;
   width: 100%;
   padding: 5px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   .icons-group {
-    // flex布局 溢出不换行
-    height: 1.5rem;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -64,27 +62,39 @@ export const NavContainer = styled.div`
     width: auto;
     min-width: 100%;
     .icon-list {
-        // 每项 icon 样式
-        min-width: 1.6rem;
+        min-width: 3rem;
         height: 100%;
         .flex-around();
         flex-direction: column;
         align-items: center;
-        .icon {
-          width: @iconWidth * 0.72;
-          height: @iconWidth * 0.72;
-          line-height: @iconWidth * 0.72;
-          .icons();
-          .home {
-            font-size: 0.4rem;
-          }
-        }
-        .exit-icon {
-          background: #ccc;
+        padding:0 10px;
+        overflow: hidden;
+        .home {
+          width:2.6rem;
+          height:2.6rem;
+          border-radius:50%;
+          background: #FF3333;
+          display: table-cell; 
+          vertical-align:middle; 
+          text-align:center; 
+          color: #ffffff;
+          font-size: 25px;
         }
         .icon-text {
-          font-size: @iconText;
+          font-size: ${style["icon-text"]};
+          margin: 0 auto;
+          color: gray
+        }
+      }
+      .icon-list:last-of-type{
+        .home {
+          background: #ccc;
+          color: gray;
+        }
+        .icon-text {
+          padding: 10px;
         }
       }
   }
 `;
+

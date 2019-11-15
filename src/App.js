@@ -3,7 +3,8 @@ import { Provider } from "react-redux";
 import { GlobalStyle } from "./style";
 import { renderRoutes } from "react-router-config";
 import { IconStyle } from "./assets/iconfont/iconfont";
-import { IconHomeStyle } from "./assets/iconhome/iconhome"
+import { IconHomeStyle } from "./assets/iconhome/iconhome";
+import { IconFindStyle } from "./assets/findIcons/findIcons";
 import store from "./store/index";
 import routes from "./routes/index.js";
 import { HashRouter } from "react-router-dom";
@@ -16,6 +17,7 @@ function App() {
         <GlobalStyle></GlobalStyle>
         <IconStyle></IconStyle>
         <IconHomeStyle></IconHomeStyle>
+        <IconFindStyle></IconFindStyle>
         {renderRoutes(routes)}
       </HashRouter>
     </Provider>

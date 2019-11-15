@@ -16,44 +16,34 @@ function Home(props) {
         >
           &#xe65c;
         </span>
-
-          {/* <NavLink to="/home" activeClassName="selected">
-            <TabItem>
-              <span>我的</span>
-            </TabItem>
-          </NavLink>
-          <NavLink to="/recommend" activeClassName="selected">
-            <TabItem>
-              <span>发现</span>
-            </TabItem>
-          </NavLink> */}
-
-        <span className="title" onClick={() => props.history.push("/home")}>我的</span>
-        <span className="title" onClick={() => props.history.push("/recommend")}>发现</span>
-        <span
-          className="iconfont search"
-          onClick={() => props.history.push("/search")}
-        >
-          &#xe62b;
-        </span>
-      </Top>
-      <Tab>
+        <NavLink to="/home" activeClassName="selected">
+          <TabItem>
+            <span>我的</span>
+          </TabItem>
+        </NavLink>
         <NavLink to="/recommend" activeClassName="selected">
           <TabItem>
-            <span>推荐</span>
+            <span>发现</span>
           </TabItem>
         </NavLink>
-        <NavLink to="/singers" activeClassName="selected">
+        <NavLink to="/friend" activeClassName="selected">
           <TabItem>
-            <span>歌手</span>
+            <span>朋友</span>
           </TabItem>
         </NavLink>
-        <NavLink to="/rank" activeClassName="selected">
+        <NavLink to="/videoPage" activeClassName="selected">
           <TabItem>
-            <span>排行榜</span>
+            <span>视频</span>
           </TabItem>
         </NavLink>
-      </Tab>
+        <NavLink to="/search" activeClassName="selected">
+          <TabItem>
+            <span className="iconfont search">
+              &#xe62b;
+            </span>
+          </TabItem>
+        </NavLink>
+      </Top>
       {renderRoutes(route.routes)}
       <Player></Player>
     </div>

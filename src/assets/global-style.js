@@ -33,6 +33,7 @@ export default {
   "background-color-shadow": "rgba(0, 0, 0, 0.3)",
   "highlight-background-color": "#fff",
   "official-red": "#E82001",
+  "icon-text": '12px',
   extendClick,
   noWrap
 };

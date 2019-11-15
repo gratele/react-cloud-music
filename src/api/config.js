@@ -264,3 +264,26 @@ export const homeIcons = [{
   text: '编辑',
   icon: 'home icontoggle'
 }]
+
+export const findIcons = [{
+  text: '每日推荐',
+  icon: 'find rili',
+  linkTo: 'recommend'
+}, {
+  text: '歌单',
+  icon: 'find gedan',
+  linkTo: 'singers'
+}, {
+  text: '排行榜',
+  icon: 'find paixingbang',
+  linkTo: 'rank'
+}, {
+  text: '电台',
+  icon: 'find diantai',
+  linkTo: 'dj'
+}, {
+  text: '私人FM',
+  icon: 'find shouyin',
+  linkTo: 'personalFm'
+}]
+

@@ -90,17 +90,17 @@ export default [
             component: Login
           }
         ]
-      },{
-        path: "/home",
-        exact: true,
-        key: "home",
-        component: Home
       },
       {
         path: "/",
         component: HomeLayout,
         routes: [
-          
+          {
+            path: "/home",
+            exact: true,
+            key: "home",
+            component: Home
+          },
           {
             path: "/",
             exact: true,

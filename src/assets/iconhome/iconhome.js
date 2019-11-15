@@ -50,7 +50,7 @@ export const IconHomeStyle = createGlobalStyle`
   }
   
   .iconqiche:before {
-    content: "\e6c5";
+    content: "\\e6c5";
   }
   
   .iconorder-received:before {

@@ -9,6 +9,7 @@ import { forceCheck } from 'react-lazyload';
 import { renderRoutes } from 'react-router-config';
 import { EnterLoading, Error } from './../Singers/style';
 import Loading from '../../baseUI/loading-v2/index';
+import FindIconsList from '../../components/findIconsList';
 
 function Recommend(props) {
   const { bannerList, recommendList, songsCount, enterLoading, recommendListErrorMessage } = props;
@@ -32,6 +33,7 @@ function Recommend(props) {
       <Scroll className="list" onScroll={forceCheck}>
         <div>
           <Slider bannerList={bannerListJS}></Slider>
+          <FindIconsList></FindIconsList>
           <RecommendList recommendList={recommendListJS}></RecommendList>
         </div>
       </Scroll>
