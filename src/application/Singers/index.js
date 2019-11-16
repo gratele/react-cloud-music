@@ -15,9 +15,11 @@ import LazyLoad, { forceCheck } from 'react-lazyload';
 import Loading from '../../baseUI/loading-v2/index';
 import { renderRoutes } from 'react-router-config';
 import { withRouter } from 'react-router-dom';
+import Header from './../../baseUI/header2/index';
 
 function Singers(props) {
   const scrollRef = useRef(null);
+  const headerEl = useRef();
 
   const { singerList, category, alpha, pageCount, songsCount, pullUpLoading, pullDownLoading, enterLoading } = props;
 
@@ -80,6 +82,7 @@ function Singers(props) {
     <div>
       {/* 对于better-scroll来讲，其作用的元素外面必须要有一个尺寸确定的容器包裹，因此设置xxxContainer */}
       <NavContainer>
+        <Header ref={headerEl} title="歌单" isMarquee={false} handleClick={() =>{props.history.goBack()}}> </Header>
         <Horizen title={"分类(默认热门):"} list={categoryTypes} handleClick={(v) => handleUpdateCategory(v)} oldVal={category}></Horizen>
         <Horizen title={"首字母:"} list={alphaTypes} handleClick={(v) => handleUpdateAlpha(v)} oldVal={alpha}></Horizen>
       </NavContainer>

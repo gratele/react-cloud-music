@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useRef } from 'react';
 import { connect } from 'react-redux'
 import { getRankList } from './store/actionCreators'
 import Loading from '../../baseUI/loading-v2';
@@ -12,6 +12,7 @@ import Scroll from '../../baseUI/scroll/index';
 import { EnterLoading } from './../Singers/style';
 import { filterIndex, filterIdx } from '../../api/utils';
 import { renderRoutes } from 'react-router-config';
+import Header from './../../baseUI/header2/index';
 
 function Rank(props) {
 
@@ -20,6 +21,7 @@ function Rank(props) {
   const { getRankListDataDispatch } = props;
 
   let rankList = list ? list.toJS() : [];
+  const headerEl = useRef();
 
   useEffect(() => {
     if (!rankList.length) {
@@ -27,6 +29,11 @@ function Rank(props) {
     }
     // eslint-disable-next-line
   }, []);
+
+  const handleBack = () => {
+    // setShowStatus(false);
+    props.history.goBack()
+  };
 
   const enterDetail = (detail) => {
     const idx = filterIdx(detail.name);
@@ -80,6 +87,7 @@ function Rank(props) {
 
   return (
     <Container play={songsCount}>
+      <Header ref={headerEl} title="排行榜" isMarquee={false} handleClick={handleBack}> </Header>
       <Scroll>
         <div>
           <h1 className="offical" style={displayStyle}>官方榜</h1>

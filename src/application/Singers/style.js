@@ -4,7 +4,7 @@ import style from '../../assets/global-style';
 export const NavContainer = styled.div`
   box-sizing: border-box;
   position: fixed;
-  top: 50px;
+  top: 0;
   width: 100%;
   padding: 5px;
   overflow: hidden;

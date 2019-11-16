@@ -21,6 +21,26 @@ const Home = props => {
   );
 };
 
+const FriendComponent  = lazy(()=> import("../application/Friend/"));
+
+const Friend = props => {
+  return (
+    <Suspense fallback={null}>
+      <FriendComponent {...props}></FriendComponent>
+    </Suspense>
+  );
+};
+
+const VideoComponent  = lazy(()=> import("../application/Video/"));
+
+const Video = props => {
+  return (
+    <Suspense fallback={null}>
+      <VideoComponent {...props}></VideoComponent>
+    </Suspense>
+  );
+};
+
 const RecommendComponent = lazy(() => import("../application/Recommend/"));
 const Recommend = props => {
   return (
@@ -90,6 +110,27 @@ export default [
             component: Login
           }
         ]
+      },{
+        path: "/rank/",
+        component: Rank,
+        key: "rank",
+        routes: [
+          {
+            path: "/rank/:id",
+            component: Album
+          }
+        ]
+      },
+      {
+        path: "/singers",
+        component: Singers,
+        key: "singers",
+        routes: [
+          {
+            path: "/singers/:id",
+            component: Singer
+          }
+        ]
       },
       {
         path: "/",
@@ -100,6 +141,17 @@ export default [
             exact: true,
             key: "home",
             component: Home
+          },
+          {
+            path: "/friend",
+            exact: true,
+            key: "friend",
+            component: Friend
+          },{
+            path: "/videoPage",
+            exact: true,
+            key: "videoPage",
+            component: Video
           },
           {
             path: "/",
@@ -116,28 +168,8 @@ export default [
               }
             ]
           },
-          {
-            path: "/singers",
-            component: Singers,
-            key: "singers",
-            routes: [
-              {
-                path: "/singers/:id",
-                component: Singer
-              }
-            ]
-          },
-          {
-            path: "/rank/",
-            component: Rank,
-            key: "rank",
-            routes: [
-              {
-                path: "/rank/:id",
-                component: Album
-              }
-            ]
-          },
+         
+          
           {
             path: "/album/:id",
             exact: true,
