@@ -3,10 +3,31 @@ import { Header, Container } from "./style";
 import { trimPhone } from "../../../../api/utils";
 import StepOne from "./step-one";
 import StepTwo from "./step-two";
+import PhonePwd from "./phonePwd";
 
 const PhoneForm = props => {
-  const { onClickBack, sentVcode, sentStatus, loginByVcode } = props;
+  const {
+    onClickBack,
+    sentVcode,
+    sentStatus,
+    loginByVcode,
+    loginByPassword,
+    sentCheck,
+    errorMessage
+  } = props;
+
   const [phone, setPhone] = useState("");
+  const [isPasswordExistBack, setIsPasswordExistBack] = useState(false);
+
+  // 检测手机号码是否已注册
+  const checkCellphoneExistence = () => {
+    sentCheck(trimPhone(phone));
+    setIsPasswordExistBack(true);
+  };
+  // 手机登录
+  const phoneLogin = password => {
+    loginByPassword(trimPhone(phone), password);
+  };
 
   //验证码触发登录操作
   const triggerLogin = useCallback(
@@ -15,7 +36,6 @@ const PhoneForm = props => {
     },
     [phone, loginByVcode]
   );
-
   //切换手机号码和验证码表单
   const triggerSentVcode = () => {
     sentVcode(trimPhone(phone));
@@ -46,13 +66,21 @@ const PhoneForm = props => {
         />
         手机号登录
       </Header>
-      {!sentStatus ? (
+      {!isPasswordExistBack && !sentStatus && (
         <StepOne
           onChangePhone={onChangePhone}
-          onClickNext={triggerSentVcode}
+          onClickNext={checkCellphoneExistence}
           phone={phone}
         />
-      ) : (
+      )}
+      {isPasswordExistBack && !sentStatus && (
+        <PhonePwd
+          onClickNext={phoneLogin}
+          onClickSentVcode={triggerSentVcode}
+          errorMessage={errorMessage}
+        ></PhonePwd>
+      )}
+      {sentStatus && (
         <StepTwo
           triggerLogin={triggerLogin}
           phone={phone}

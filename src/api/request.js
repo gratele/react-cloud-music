@@ -33,7 +33,6 @@ export const getSingerInfoRequest = id => {
 export const getRankListDetailRequest = id => {
   // return axiosInstance.get(`/top/list/?idx=${id}`);
   return axiosInstance.get(`/playlist/detail?id=${id}`);
-
 };
 
 export const getHotKeyWordsRequest = () => {
@@ -68,4 +67,27 @@ export const sentVcodeRequest = phone => {
 
 export const loginByVcodeRequest = (phone, vcode) => {
   return axiosInstance.get(`/captcha/verify?phone=${phone}&captcha=${vcode}`);
+};
+
+export const sentCheckRequest = phone => {
+  return axiosInstance.get(`/cellphone/existence/check?phone=${phone}`);
+};
+
+export const loginByPasswordRequest = (phone, password) => {
+  return axiosInstance.get(
+    `/login/cellphone?phone=${phone}&password=${password}`
+  );
+};
+
+export const getLoginStatusRequest = () => {
+  return axiosInstance.get(`/login/status`);
+};
+
+export const getRecordListRequest = (uid, type = 0) => {
+  // return axiosInstance.get(`/user/record?uid=${uid}&type=${type}`)
+  return axiosInstance.get(`/user/record?uid=32953014&type=1`);
+};
+
+export const getDateRecommendRequest = () => {
+  return axiosInstance.get(`/recommend/songs`);
 };

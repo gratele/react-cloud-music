@@ -3,10 +3,12 @@ import { trimPhone } from "../../../../../api/utils";
 
 const StepOne = props => {
   const { onChangePhone, onClickNext, phone } = props;
+
   const inputRef = useRef();
   useEffect(() => {
     inputRef.current.focus();
   });
+
   return (
     <>
       <p className="input">

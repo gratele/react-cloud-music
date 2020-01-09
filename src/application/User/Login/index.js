@@ -15,8 +15,13 @@ const Login = props => {
     sentStatus,
     loginStatus,
     changeSentStatusDispatch,
-    history
+    history,
+    sentCheckDispatch,
+    exist,
+    LoginByPasswordDispatch,
+    errorMessage
   } = props;
+
   const [inPhone, setInPhone] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const checkBoxRef = useRef();
@@ -78,8 +83,12 @@ const Login = props => {
             // loginByPhone={LoginByPhoneDispatch}
             loginByVcode={LoginByVcodeDispatch}
             onClickBack={onPhoneBack}
+            sentCheck={sentCheckDispatch}
             sentVcode={sentVcodeDispatch}
             sentStatus={sentStatus}
+            exist={exist}
+            loginByPassword={LoginByPasswordDispatch}
+            errorMessage={errorMessage}
           />
         </LoginContainer>
       </CSSTransition>
@@ -91,7 +100,9 @@ const Login = props => {
 const mapStateToProps = state => ({
   userInfo: state.getIn(["user", "userInfo"]),
   sentStatus: state.getIn(["user", "sentStatus"]),
-  loginStatus: state.getIn(["user", "loginStatus"])
+  loginStatus: state.getIn(["user", "loginStatus"]),
+  exist: state.getIn(["user", "exist"]),
+  errorMessage: state.getIn(["user", "errorMessage"])
 });
 // 映射dispatch到props上
 const mapDispatchToProps = dispatch => {
@@ -107,6 +118,12 @@ const mapDispatchToProps = dispatch => {
     },
     changeSentStatusDispatch() {
       dispatch(actionCreators.saveSentStatus(false));
+    },
+    sentCheckDispatch(phone) {
+      dispatch(actionCreators.sentCheck(phone));
+    },
+    LoginByPasswordDispatch(phone, password) {
+      dispatch(actionCreators.loginByPassword(phone, password));
     }
   };
 };

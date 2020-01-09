@@ -21,7 +21,7 @@ const Home = props => {
   );
 };
 
-const FriendComponent  = lazy(()=> import("../application/Friend/"));
+const FriendComponent = lazy(() => import("../application/Friend/"));
 
 const Friend = props => {
   return (
@@ -31,7 +31,7 @@ const Friend = props => {
   );
 };
 
-const VideoComponent  = lazy(()=> import("../application/Video/"));
+const VideoComponent = lazy(() => import("../application/Video/"));
 
 const Video = props => {
   return (
@@ -46,6 +46,17 @@ const Recommend = props => {
   return (
     <Suspense fallback={null}>
       <RecommendComponent {...props}></RecommendComponent>
+    </Suspense>
+  );
+};
+
+const DateRecommendComponent = lazy(() =>
+  import("../application/DateRecommend/")
+);
+const DateRecommend = props => {
+  return (
+    <Suspense fallback={null}>
+      <DateRecommendComponent {...props}></DateRecommendComponent>
     </Suspense>
   );
 };
@@ -95,6 +106,17 @@ const Search = props => {
   );
 };
 
+const RecentlyPlayedComponent = lazy(() =>
+  import("./../application/recentlyPlayed/")
+);
+const RecentlyPlayed = props => {
+  return (
+    <Suspense fallback={null}>
+      <RecentlyPlayedComponent {...props}></RecentlyPlayedComponent>
+    </Suspense>
+  );
+};
+
 export default [
   {
     component: BlankLayout,
@@ -110,7 +132,8 @@ export default [
             component: Login
           }
         ]
-      },{
+      },
+      {
         path: "/rank/",
         component: Rank,
         key: "rank",
@@ -122,6 +145,11 @@ export default [
         ]
       },
       {
+        path: "/dateRecommend",
+        component: DateRecommend,
+        key: "dateRecommend"
+      },
+      {
         path: "/singers",
         component: Singers,
         key: "singers",
@@ -131,6 +159,12 @@ export default [
             component: Singer
           }
         ]
+      },
+      {
+        path: "/recently",
+        exact: true,
+        key: "recently",
+        component: RecentlyPlayed
       },
       {
         path: "/",
@@ -147,7 +181,8 @@ export default [
             exact: true,
             key: "friend",
             component: Friend
-          },{
+          },
+          {
             path: "/videoPage",
             exact: true,
             key: "videoPage",
@@ -168,8 +203,6 @@ export default [
               }
             ]
           },
-         
-          
           {
             path: "/album/:id",
             exact: true,

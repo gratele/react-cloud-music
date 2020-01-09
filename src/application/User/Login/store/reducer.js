@@ -4,7 +4,9 @@ import { fromJS } from "immutable";
 const defaultState = fromJS({
   userInfo: {},
   sentStatus: false,
-  loginStatus: false
+  loginStatus: false,
+  exist: 0,
+  errorMessage: ""
 });
 
 export default (state = defaultState, action) => {
@@ -15,6 +17,11 @@ export default (state = defaultState, action) => {
       return state.set("sentStatus", action.data);
     case actionTypes.CHANGE_LOGIN_STATUS:
       return state.set("loginStatus", action.data);
+    case actionTypes.CHANGE_CHECK_EXIT:
+      return state.set("exist", action.data);
+    case actionTypes.ERROR_MESSAGE: {
+      return state.set("errorMessage", action.data);
+    }
     default:
       return state;
   }

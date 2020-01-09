@@ -30,6 +30,28 @@ export const Container = styled.div`
       line-height: 30px;
     }
   }
+  > p.password {
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 0 10%;
+    white-space: nowrap;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding-left: 10px;
+      // font-size: 22px;
+      font-weight: bold;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
   hr {
     margin: 0 10%;
     margin-top: 10px;
@@ -52,6 +74,19 @@ export const Container = styled.div`
     &.disabled {
       opacity: 0.3;
     }
+  }
+  .error {
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 0 40%;
+    white-space: nowrap;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #db3730;
   }
 `;
 export const Header = styled.div`

@@ -24,7 +24,6 @@ export const findIconsList = (props) => {
                     >
                     <div className="icon">
                         <i className={item.icon}>
-                        {/* <img /> */}
                         </i>
                     </div>
                     <span className="icon-text">{item.text}</span>

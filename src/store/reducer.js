@@ -7,6 +7,7 @@ import { reducer as singerInfoReducer } from "../application/Singer/store/index"
 import { reducer as playerReducer } from "../application/Player/store/index";
 import { reducer as searchReducer } from "../application/Search/store/index";
 import { reducer as userReducer } from "../application/User/Login/store/index";
+import { reducer as dateRecommendReducer } from "../application/DateRecommend/store/index";
 
 export default combineReducers({
   recommend: recommendReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   singerInfo: singerInfoReducer,
   player: playerReducer,
   search: searchReducer,
-  user: userReducer
+  user: userReducer,
+  dateRecommend: dateRecommendReducer
 });

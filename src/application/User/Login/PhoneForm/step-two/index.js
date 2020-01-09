@@ -4,6 +4,7 @@ import { VcodeBox, Container } from "./style";
 const maxLength = 4;
 const sentPeriod = 60;
 let theTimer;
+
 const StepTwo = props => {
   const { phone, triggerLogin, reSentVcode } = props;
   const [cursorIndex, setCursorIndex] = useState(0);
@@ -50,15 +51,15 @@ const StepTwo = props => {
       <p className="tips">&emsp;&emsp;验证码已发送至</p>
       <p className="vphone">
         <span>
-          {phone.replace(/(\d{3})\s(\d{4})\s(\d{4})/g, "+86 $1 **** $3")}
+          {/* {phone.replace(/(\d{3})\s(\d{4})\s(\d{4})/g, "+86 $1 **** $3")} */}
         </span>
         {timer ? (
           <span>{timer}S</span>
         ) : (
-            <span className="sentBtn" onClick={onClickSentVcode}>
-              重新发送
+          <span className="sentBtn" onClick={onClickSentVcode}>
+            重新发送
           </span>
-          )}
+        )}
       </p>
       <VcodeBox>
         <h2 className="heading-2">验证码:</h2>

@@ -1,10 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const baseUrl = 'http://localhost:3300';
-
+export const baseUrl = "http://localhost:3300";
+// http://localhost:3300/login/cellphone?phone=18200130980&password=lehaixia0912
+// "token": "fea0ab0db2ff5ab5701dc15b5678ca0be75b4f872a930d2a9fedbc77dca09988392855b748b56c4bd27bca9db770b58a41049cea1c6bb9b6",
+// uid: 2102205859 user: grate_yue (18200130980) password: lehaixia0912
 // axios的实例及拦截器配置
 const axiosInstance = axios.create({
-  baseURL: baseUrl
+  baseURL: baseUrl,
+  withCredentials: true //关键
 });
 
 axiosInstance.interceptors.response.use(
@@ -14,177 +17,177 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export {
-  axiosInstance
-};
+export { axiosInstance };
 
-export const categoryTypes = [{
-  name: "华语男",
-  key: "1001"
-},
-{
-  name: "华语女",
-  key: "1002"
-},
-{
-  name: "华语组合",
-  key: "1003"
-},
-{
-  name: "欧美男",
-  key: "2001"
-},
-{
-  name: "欧美女",
-  key: "2002"
-},
-{
-  name: "欧美组合",
-  key: "2003"
-},
-{
-  name: "日本男",
-  key: "6001"
-},
-{
-  name: "日本女",
-  key: "6002"
-},
-{
-  name: "日本组合",
-  key: "6003"
-},
-{
-  name: "韩国男",
-  key: "7001"
-},
-{
-  name: "韩国女",
-  key: "7002"
-},
-{
-  name: "韩国组合",
-  key: "7003"
-},
-{
-  name: "其他男歌手",
-  key: "4001"
-},
-{
-  name: "其他女歌手",
-  key: "4002"
-},
-{
-  name: "其他组合",
-  key: "4003"
-},
+export const categoryTypes = [
+  {
+    name: "华语男",
+    key: "1001"
+  },
+  {
+    name: "华语女",
+    key: "1002"
+  },
+  {
+    name: "华语组合",
+    key: "1003"
+  },
+  {
+    name: "欧美男",
+    key: "2001"
+  },
+  {
+    name: "欧美女",
+    key: "2002"
+  },
+  {
+    name: "欧美组合",
+    key: "2003"
+  },
+  {
+    name: "日本男",
+    key: "6001"
+  },
+  {
+    name: "日本女",
+    key: "6002"
+  },
+  {
+    name: "日本组合",
+    key: "6003"
+  },
+  {
+    name: "韩国男",
+    key: "7001"
+  },
+  {
+    name: "韩国女",
+    key: "7002"
+  },
+  {
+    name: "韩国组合",
+    key: "7003"
+  },
+  {
+    name: "其他男歌手",
+    key: "4001"
+  },
+  {
+    name: "其他女歌手",
+    key: "4002"
+  },
+  {
+    name: "其他组合",
+    key: "4003"
+  }
 ];
 
 //歌手首字母
-export const alphaTypes = [{
-  key: "A",
-  name: "A"
-},
-{
-  key: "B",
-  name: "B"
-},
-{
-  key: "C",
-  name: "C"
-},
-{
-  key: "D",
-  name: "D"
-},
-{
-  key: "E",
-  name: "E"
-},
-{
-  key: "F",
-  name: "F"
-},
-{
-  key: "G",
-  name: "G"
-},
-{
-  key: "H",
-  name: "H"
-},
-{
-  key: "I",
-  name: "I"
-},
-{
-  key: "J",
-  name: "J"
-},
-{
-  key: "K",
-  name: "K"
-},
-{
-  key: "L",
-  name: "L"
-},
-{
-  key: "M",
-  name: "M"
-},
-{
-  key: "N",
-  name: "N"
-},
-{
-  key: "O",
-  name: "O"
-},
-{
-  key: "P",
-  name: "P"
-},
-{
-  key: "Q",
-  name: "Q"
-},
-{
-  key: "R",
-  name: "R"
-},
-{
-  key: "S",
-  name: "S"
-},
-{
-  key: "T",
-  name: "T"
-},
-{
-  key: "U",
-  name: "U"
-},
-{
-  key: "V",
-  name: "V"
-},
-{
-  key: "W",
-  name: "W"
-},
-{
-  key: "X",
-  name: "X"
-},
-{
-  key: "Y",
-  name: "Y"
-},
-{
-  key: "Z",
-  name: "Z"
-}
+export const alphaTypes = [
+  {
+    key: "A",
+    name: "A"
+  },
+  {
+    key: "B",
+    name: "B"
+  },
+  {
+    key: "C",
+    name: "C"
+  },
+  {
+    key: "D",
+    name: "D"
+  },
+  {
+    key: "E",
+    name: "E"
+  },
+  {
+    key: "F",
+    name: "F"
+  },
+  {
+    key: "G",
+    name: "G"
+  },
+  {
+    key: "H",
+    name: "H"
+  },
+  {
+    key: "I",
+    name: "I"
+  },
+  {
+    key: "J",
+    name: "J"
+  },
+  {
+    key: "K",
+    name: "K"
+  },
+  {
+    key: "L",
+    name: "L"
+  },
+  {
+    key: "M",
+    name: "M"
+  },
+  {
+    key: "N",
+    name: "N"
+  },
+  {
+    key: "O",
+    name: "O"
+  },
+  {
+    key: "P",
+    name: "P"
+  },
+  {
+    key: "Q",
+    name: "Q"
+  },
+  {
+    key: "R",
+    name: "R"
+  },
+  {
+    key: "S",
+    name: "S"
+  },
+  {
+    key: "T",
+    name: "T"
+  },
+  {
+    key: "U",
+    name: "U"
+  },
+  {
+    key: "V",
+    name: "V"
+  },
+  {
+    key: "W",
+    name: "W"
+  },
+  {
+    key: "X",
+    name: "X"
+  },
+  {
+    key: "Y",
+    name: "Y"
+  },
+  {
+    key: "Z",
+    name: "Z"
+  }
 ];
 
 //排行榜编号
@@ -226,64 +229,110 @@ export const playMode = {
   sequence: 0,
   loop: 1,
   random: 2
-}
-export const homeIcons = [{
-  text: '私藏推荐',
-  icon: 'home iconxindian'
-}, {
-  text: '私人FM',
-  icon: 'home iconshouyinji'
-}, {
-  text: 'Sati空间',
-  icon: 'home iconyueliang'
-}, {
-  text: '最新电音',
-  icon: 'home iconduodian'
-}, {
-  text: '因乐交友',
-  icon: 'home iconjiaoyou'
-}, {
-  text: '亲子频道',
-  icon: 'home iconertong'
-}, {
-  text: '古典专区',
-  icon: 'home icongangqin'
-}, {
-  text: '跑步FM',
-  icon: 'home iconorder-received'
-}, {
-  text: '小冰电台',
-  icon: 'home iconbingjiling'
-}, {
-  text: '爵士电台',
-  icon: 'home iconyandou'
-}, {
-  text: '驾驶模式',
-  icon: 'home iconqiche'
-}, {
-  text: '编辑',
-  icon: 'home icontoggle'
-}]
+};
+export const homeIcons = [
+  {
+    text: "私藏推荐",
+    icon: "home iconxindian"
+  },
+  {
+    text: "私人FM",
+    icon: "home iconshouyinji"
+  },
+  {
+    text: "Sati空间",
+    icon: "home iconyueliang"
+  },
+  {
+    text: "最新电音",
+    icon: "home iconduodian"
+  },
+  {
+    text: "因乐交友",
+    icon: "home iconjiaoyou"
+  },
+  {
+    text: "亲子频道",
+    icon: "home iconertong"
+  },
+  {
+    text: "古典专区",
+    icon: "home icongangqin"
+  },
+  {
+    text: "跑步FM",
+    icon: "home iconorder-received"
+  },
+  {
+    text: "小冰电台",
+    icon: "home iconbingjiling"
+  },
+  {
+    text: "爵士电台",
+    icon: "home iconyandou"
+  },
+  {
+    text: "驾驶模式",
+    icon: "home iconqiche"
+  },
+  {
+    text: "编辑",
+    icon: "home icontoggle"
+  }
+];
 
-export const findIcons = [{
-  text: '每日推荐',
-  icon: 'find rili',
-  linkTo: 'recommend'
-}, {
-  text: '歌单',
-  icon: 'find gedan',
-  linkTo: 'singers'
-}, {
-  text: '排行榜',
-  icon: 'find paixingbang',
-  linkTo: 'rank'
-}, {
-  text: '电台',
-  icon: 'find diantai',
-  linkTo: 'dj'
-}, {
-  text: '私人FM',
-  icon: 'find shouyin',
-  linkTo: 'personalFm'
-}]
+export const homeList = [
+  {
+    icon: "iconyinyue",
+    text: "本地音乐",
+    num: 0
+  },
+  {
+    icon: "iconzuijinbofang",
+    text: "最近播放",
+    num: 0
+  },
+  {
+    icon: "iconxiazai",
+    text: "下载管理",
+    num: 0
+  },
+  {
+    icon: "icondiantai",
+    text: "我的电台",
+    num: 0
+  },
+  {
+    icon: "iconicon-31",
+    text: "我的收藏",
+    num: 0
+  }
+];
 
+export const findIcons = [
+  {
+    text: "每日推荐",
+    icon: "find rili",
+    linkTo: "dateRecommend"
+  },
+  {
+    text: "歌单",
+    icon: "find gedan",
+    linkTo: "singers"
+  },
+  {
+    text: "排行榜",
+    icon: "find paixingbang",
+    linkTo: "rank"
+  },
+  {
+    text: "电台",
+    icon: "find diantai",
+    linkTo: "dj"
+  },
+  {
+    text: "私人FM",
+    icon: "find shouyin",
+    linkTo: "personalFm"
+  }
+];
