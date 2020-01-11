@@ -83,9 +83,8 @@ export const getLoginStatusRequest = () => {
   return axiosInstance.get(`/login/status`);
 };
 
-export const getRecordListRequest = (uid, type = 0) => {
-  // return axiosInstance.get(`/user/record?uid=${uid}&type=${type}`)
-  return axiosInstance.get(`/user/record?uid=32953014&type=1`);
+export const getRecordListRequest = (uid = 0, type = 0) => {
+  return axiosInstance.get(`/user/record?uid=${uid}&type=${type}`);
 };
 
 export const getDateRecommendRequest = () => {

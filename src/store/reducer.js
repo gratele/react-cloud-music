@@ -8,6 +8,7 @@ import { reducer as playerReducer } from "../application/Player/store/index";
 import { reducer as searchReducer } from "../application/Search/store/index";
 import { reducer as userReducer } from "../application/User/Login/store/index";
 import { reducer as dateRecommendReducer } from "../application/DateRecommend/store/index";
+import { reducer as recentlyPlayedReducer } from "../application/recentlyPlayed/store/index";
 
 export default combineReducers({
   recommend: recommendReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   player: playerReducer,
   search: searchReducer,
   user: userReducer,
-  dateRecommend: dateRecommendReducer
+  dateRecommend: dateRecommendReducer,
+  recently: recentlyPlayedReducer
 });
