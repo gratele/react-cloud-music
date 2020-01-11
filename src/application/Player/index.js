@@ -28,9 +28,9 @@ function Player(props) {
 
   const {
     playing,
-    currentSong:immutableCurrentSong,
+    currentSong: immutableCurrentSong,
     currentIndex,
-    playList:immutablePlayList,
+    playList: immutablePlayList,
     mode,
     sequencePlayList,
     fullScreen
@@ -81,7 +81,12 @@ function Player(props) {
     togglePlayingDispatch(true);
     getLyric(current.id);
     setCurrentTime(0);
-    setDuration((current.dt / 1000) | 0);
+
+    if (current.dt) {
+      setDuration((current.dt / 1000) | 0);
+    } else {
+      setDuration((current.duration / 1000) | 0);
+    }
     // eslint-disable-next-line
   }, [currentIndex, playList]);
 
@@ -299,7 +304,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 // 将ui组件包装成容器组件
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(React.memo(Player));
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Player));

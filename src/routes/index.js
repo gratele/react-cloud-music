@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Redirect } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import BlankLayout from "../layouts/BlankLayout";
+import PlayLayout from "../layouts/PlayLayout";
 
 const LoginComponent = lazy(() => import("../application/User/Login"));
 const Login = props => {
@@ -134,86 +135,91 @@ export default [
         ]
       },
       {
-        path: "/rank/",
-        component: Rank,
-        key: "rank",
+        component: PlayLayout,
         routes: [
           {
-            path: "/rank/:id",
-            component: Album
-          }
-        ]
-      },
-      {
-        path: "/dateRecommend",
-        component: DateRecommend,
-        key: "dateRecommend"
-      },
-      {
-        path: "/singers",
-        component: Singers,
-        key: "singers",
-        routes: [
-          {
-            path: "/singers/:id",
-            component: Singer
-          }
-        ]
-      },
-      {
-        path: "/recently",
-        exact: true,
-        key: "recently",
-        component: RecentlyPlayed
-      },
-      {
-        path: "/",
-        component: HomeLayout,
-        routes: [
-          {
-            path: "/home",
-            exact: true,
-            key: "home",
-            component: Home
-          },
-          {
-            path: "/friend",
-            exact: true,
-            key: "friend",
-            component: Friend
-          },
-          {
-            path: "/videoPage",
-            exact: true,
-            key: "videoPage",
-            component: Video
-          },
-          {
-            path: "/",
-            exact: true,
-            render: () => <Redirect to={"/recommend"} />
-          },
-          {
-            path: "/recommend",
-            component: Recommend,
+            path: "/rank/",
+            component: Rank,
+            key: "rank",
             routes: [
               {
-                path: "/recommend/:id",
+                path: "/rank/:id",
                 component: Album
               }
             ]
           },
           {
-            path: "/album/:id",
-            exact: true,
-            key: "album",
-            component: Album
+            path: "/singers",
+            component: Singers,
+            key: "singers",
+            routes: [
+              {
+                path: "/singers/:id",
+                component: Singer
+              }
+            ]
           },
           {
-            path: "/search",
+            path: "/dateRecommend",
+            component: DateRecommend,
+            key: "dateRecommend"
+          },
+          {
+            path: "/recently",
             exact: true,
-            key: "search",
-            component: Search
+            key: "recently",
+            component: RecentlyPlayed
+          },
+          {
+            path: "/",
+            component: HomeLayout,
+            routes: [
+              {
+                path: "/home",
+                exact: true,
+                key: "home",
+                component: Home
+              },
+              {
+                path: "/friend",
+                exact: true,
+                key: "friend",
+                component: Friend
+              },
+              {
+                path: "/videoPage",
+                exact: true,
+                key: "videoPage",
+                component: Video
+              },
+              {
+                path: "/",
+                exact: true,
+                render: () => <Redirect to={"/recommend"} />
+              },
+              {
+                path: "/recommend",
+                component: Recommend,
+                routes: [
+                  {
+                    path: "/recommend/:id",
+                    component: Album
+                  }
+                ]
+              },
+              {
+                path: "/album/:id",
+                exact: true,
+                key: "album",
+                component: Album
+              },
+              {
+                path: "/search",
+                exact: true,
+                key: "search",
+                component: Search
+              }
+            ]
           }
         ]
       }

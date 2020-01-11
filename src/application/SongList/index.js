@@ -16,6 +16,7 @@ const SongsList = React.forwardRef((props, refs) => {
     songs,
     collectCount,
     showCollect,
+    showMultiSelect,
     loading = false,
     usePageSplit
   } = props;
@@ -74,6 +75,15 @@ const SongsList = React.forwardRef((props, refs) => {
     );
   };
 
+  const multiSelect = () => {
+    return (
+      <div className="multi_list">
+        <i className="iconfont">&#xe65c;</i>
+        <span>多选</span>
+      </div>
+    );
+  };
+
   return (
     <SongList ref={refs} showBackground={props.showBackground}>
       <div className="first_line">
@@ -84,6 +94,7 @@ const SongsList = React.forwardRef((props, refs) => {
           </span>
         </div>
         {showCollect ? collect(collectCount) : null}
+        {showMultiSelect ? multiSelect() : null}
       </div>
       <SongItem>{songList(songs)}</SongItem>
     </SongList>

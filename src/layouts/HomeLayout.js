@@ -45,7 +45,7 @@ function Home(props) {
         </NavLink>
       </Top>
       {renderRoutes(route.routes)}
-      <Player></Player>
+      {/* <Player></Player> */}
     </div>
   );
 }

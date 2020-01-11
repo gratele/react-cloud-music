@@ -6,7 +6,7 @@ import Scroll from "../../baseUI/scroll/index";
 import { HEADER_HEIGHT } from "./../../api/config";
 import { getSingerInfo } from "./store/actionCreators";
 import { connect } from "react-redux";
-import Loading from './../../baseUI/loading-v2/index'
+import Loading from "./../../baseUI/loading-v2/index";
 import { EnterLoading } from "../Singers/style";
 import { changeEnterLoading } from "./store/actionCreators";
 import { CSSTransition } from "react-transition-group";
@@ -27,7 +27,6 @@ function Singer(props) {
   } = props;
 
   const { getSingerDataDispatch } = props;
-
 
   let artist = {};
   let songs = [];
@@ -102,7 +101,7 @@ function Singer(props) {
 
   const setShowStatusFalse = useCallback(() => {
     setShowStatus(false);
-  }, [])
+  }, []);
 
   return (
     <CSSTransition
@@ -166,7 +165,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 // 将ui组件包装成容器组件
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(React.memo(Singer));
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Singer));

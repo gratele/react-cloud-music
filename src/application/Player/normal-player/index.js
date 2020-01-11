@@ -128,7 +128,9 @@ function NormalPlayer(props) {
     const cdWrapperDom = cdWrapperRef.current;
     cdWrapperDom.style.transition = "all 0.4s";
     const { x, y, scale } = _getPosAndScale();
-    cdWrapperDom.style[transform] = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+    cdWrapperDom.style[
+      transform
+    ] = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
   };
 
   const afterLeave = () => {
@@ -148,11 +150,14 @@ function NormalPlayer(props) {
     }
   };
 
-  const clickPlayingCB = useCallback((e) => {
-    clickPlaying(e, !playing);
-  }, [clickPlaying, playing]);
-  
-  const pushLyricRefs = useCallback((el) => {
+  const clickPlayingCB = useCallback(
+    e => {
+      clickPlaying(e, !playing);
+    },
+    [clickPlaying, playing]
+  );
+
+  const pushLyricRefs = useCallback(el => {
     lyricLineRefs.current.push(el);
   }, []);
 
@@ -170,7 +175,9 @@ function NormalPlayer(props) {
       <NormalPlayerContainer ref={normalPlayerRef}>
         <div className="background">
           <img
-            src={song.al.picUrl + "?param=300x300"}
+            src={
+              song.al ? song.al.picUrl : song.album.picUrl + "?param=300x300"
+            }
             width="100%"
             height="100%"
             alt="歌曲图片"
@@ -182,7 +189,9 @@ function NormalPlayer(props) {
             <i className="iconfont icon-back">&#xe662;</i>
           </div>
           <h1 className="title">{song.name}</h1>
-          <h1 className="subtitle">{getName(song.ar)}</h1>
+          <h1 className="subtitle">
+            {song.ar ? getName(song.ar) : getName(song.artists)}
+          </h1>
         </Top>
         <Middle ref={cdWrapperRef} onClick={toggleCurrentState}>
           <CSSTransition
@@ -200,7 +209,11 @@ function NormalPlayer(props) {
                 <img
                   ref={cdImageRef}
                   className={`image play ${playing ? "" : "pause"}`}
-                  src={song.al.picUrl + "?param=400x400"}
+                  src={
+                    song.al
+                      ? song.al.picUrl
+                      : song.album.picUrl + "?param=400x400"
+                  }
                   alt=""
                 />
               </div>
