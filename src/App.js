@@ -5,6 +5,7 @@ import { renderRoutes } from "react-router-config";
 import { IconStyle } from "./assets/iconfont/iconfont";
 import { IconHomeStyle } from "./assets/iconhome/iconhome";
 import { IconFindStyle } from "./assets/findIcons/findIcons";
+import { IconLoginStyle } from "./assets/loginIcons/loginIcons";
 import store from "./store/index";
 import routes from "./routes/index.js";
 import { HashRouter } from "react-router-dom";
@@ -18,6 +19,7 @@ function App() {
         <IconStyle></IconStyle>
         <IconHomeStyle></IconHomeStyle>
         <IconFindStyle></IconFindStyle>
+        <IconLoginStyle></IconLoginStyle>
         {renderRoutes(routes)}
       </HashRouter>
     </Provider>

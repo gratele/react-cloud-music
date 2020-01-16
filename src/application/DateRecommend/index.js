@@ -59,10 +59,10 @@ function DateRecommend(props) {
     }
     let h = NavRef.current.offsetHeight;
     initialHeight.current = h;
-    layer.current.style.top = `${h - OFFSET}px`;
     headerEl.current.style.backgroundColor = style["theme-color"];
 
     if (loginState) {
+      layer.current.style.top = `${h - OFFSET}px`;
       songScrollWrapper.current.style.top = `${h - OFFSET}px`;
       songScroll.current.refresh();
     }
@@ -124,24 +124,26 @@ function DateRecommend(props) {
             </div>
           </ListInfo>
         )}
-        <BgLayer ref={layer}></BgLayer>
         {loginState && (
-          <SongListWrapper ref={songScrollWrapper}>
-            <Scroll onScroll={handleScroll} ref={songScroll}>
-              <SongsList
-                songs={dailySongs}
-                showMultiSelect={true}
-                musicAnimation={musicAnimation}
-                showBackground={true}
-              ></SongsList>
-            </Scroll>
-            {enterLoading ? (
-              <EnterLoading>
-                <Loading></Loading>
-              </EnterLoading>
-            ) : null}
-            <MusicNote ref={musicNoteRef}></MusicNote>
-          </SongListWrapper>
+          <div>
+            <BgLayer ref={layer}></BgLayer>
+            <SongListWrapper ref={songScrollWrapper}>
+              <Scroll onScroll={handleScroll} ref={songScroll}>
+                <SongsList
+                  songs={dailySongs}
+                  showMultiSelect={true}
+                  musicAnimation={musicAnimation}
+                  showBackground={true}
+                ></SongsList>
+              </Scroll>
+              {enterLoading ? (
+                <EnterLoading>
+                  <Loading></Loading>
+                </EnterLoading>
+              ) : null}
+              <MusicNote ref={musicNoteRef}></MusicNote>
+            </SongListWrapper>
+          </div>
         )}
       </Container>
     </Wrapper>

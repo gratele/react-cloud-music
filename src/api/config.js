@@ -336,3 +336,99 @@ export const findIcons = [
     linkTo: "personalFm"
   }
 ];
+
+export const djIcons = [
+  {
+    text: "电台分类",
+    icon: "dj dj-caidan1",
+    linkTo: "classification"
+  },
+  {
+    text: "电台排行",
+    icon: "dj dj-paixing",
+    linkTo: "ranking"
+  },
+  {
+    text: "付费精品",
+    icon: "dj dj-gerenzhongxin_wodeguizu",
+    linkTo: "pay_fine"
+  },
+  {
+    text: "主播学院",
+    icon: "dj dj-shucopy",
+    linkTo: "anchor_college"
+  }
+];
+
+export const loginIcons = [
+  {
+    icon: "login iconwodexiaoxi",
+    text: "我的消息"
+  },
+  {
+    icon: "login iconyonghu",
+    text: "我的好友"
+  },
+  {
+    icon: "login iconpifu",
+    text: "个性皮肤"
+  },
+  {
+    icon: "login icontinggeshiqu40x40",
+    text: "听歌识曲"
+  }
+];
+
+export const loginIconsTop = [
+  {
+    icon: "iconhuopiaotongxing",
+    text: "演出"
+  },
+  {
+    icon: "icongouwuche",
+    text: "商城"
+  },
+  {
+    icon: "icondibiao",
+    text: "附近的人"
+  },
+  {
+    icon: "iconicon--",
+    text: "口袋铃声"
+  },
+  {
+    icon: "icondingdan",
+    text: "我的订单"
+  }
+];
+
+export const loginIconsBottom = [
+  {
+    icon: "iconicon--2",
+    text: "定时停止播放"
+  },
+  {
+    icon: "iconsaoyisao",
+    text: "扫一扫"
+  },
+  {
+    icon: "iconicon--1",
+    text: "音乐闹钟"
+  },
+  {
+    icon: "iconhezi501",
+    text: "在线听歌免流量"
+  },
+  {
+    icon: "iconyouxi",
+    text: "游戏推荐"
+  },
+  {
+    icon: "iconCoupon",
+    text: "优惠券"
+  },
+  {
+    icon: "iconmaikefeng",
+    text: "我要直播"
+  }
+];

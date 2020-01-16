@@ -11,6 +11,7 @@ export const Top = styled.div`
     line-height: 40px;
     color: #f1f1f1;
     font-size: 14px;
+    padding-right: 30px;
     &.iconfont {
       font-size: 25px;
     }
