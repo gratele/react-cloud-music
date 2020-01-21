@@ -74,12 +74,14 @@ function Player(props) {
     let current = playList[currentIndex];
     changeCurrentDispatch(current);
     setPreSong(current);
-    audioRef.current.src = getSongUrl(current.id);
+    const id = current.mainTrackId ? current.mainTrackId : current.id;
+    audioRef.current.src = getSongUrl(id);
+
     setTimeout(() => {
       songReady.current = true;
     }, 1000);
     togglePlayingDispatch(true);
-    getLyric(current.id);
+    getLyric(id);
     setCurrentTime(0);
 
     if (current.dt) {
@@ -132,7 +134,9 @@ function Player(props) {
   const clickPlaying = (e, state) => {
     e.stopPropagation();
     togglePlayingDispatch(state);
-    currentLyric.current.togglePlay();
+    if (currentLyric.current) {
+      currentLyric.current.togglePlay();
+    }
   };
 
   const onProgressChange = curPercent => {

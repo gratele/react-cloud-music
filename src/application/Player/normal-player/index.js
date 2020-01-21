@@ -176,7 +176,15 @@ function NormalPlayer(props) {
         <div className="background">
           <img
             src={
-              song.al ? song.al.picUrl : song.album.picUrl + "?param=300x300"
+              song.album
+                ? song.album.picUrl
+                : song.al
+                ? song.al.picUrl
+                : song.album
+                ? song.album.artist.img1v1Url
+                : song.coverUrl
+                ? song.coverUrl
+                : "" + "?param=300x300"
             }
             width="100%"
             height="100%"
@@ -190,7 +198,11 @@ function NormalPlayer(props) {
           </div>
           <h1 className="title">{song.name}</h1>
           <h1 className="subtitle">
-            {song.ar ? getName(song.ar) : getName(song.artists)}
+            {song.album
+              ? getName(song.album.artists)
+              : song.ar
+              ? getName(song.ar)
+              : ""}
           </h1>
         </Top>
         <Middle ref={cdWrapperRef} onClick={toggleCurrentState}>
@@ -210,9 +222,15 @@ function NormalPlayer(props) {
                   ref={cdImageRef}
                   className={`image play ${playing ? "" : "pause"}`}
                   src={
-                    song.al
+                    song.album
+                      ? song.album.picUrl
+                      : song.al
                       ? song.al.picUrl
-                      : song.album.picUrl + "?param=400x400"
+                      : song.album
+                      ? song.album.artist.img1v1Url
+                      : song.coverUrl
+                      ? song.coverUrl
+                      : "" + "?param=400x400"
                   }
                   alt=""
                 />

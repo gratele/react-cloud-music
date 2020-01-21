@@ -9,6 +9,8 @@ import { reducer as searchReducer } from "../application/Search/store/index";
 import { reducer as userReducer } from "../application/User/Login/store/index";
 import { reducer as dateRecommendReducer } from "../application/DateRecommend/store/index";
 import { reducer as recentlyPlayedReducer } from "../application/recentlyPlayed/store/index";
+import { reducer as djSublistReducer } from "../application/DjSublist/store/index";
+import { reducer as djDetailListReducer } from "../application/djDetail/store/index";
 
 export default combineReducers({
   recommend: recommendReducer,
@@ -20,5 +22,7 @@ export default combineReducers({
   search: searchReducer,
   user: userReducer,
   dateRecommend: dateRecommendReducer,
-  recently: recentlyPlayedReducer
+  recently: recentlyPlayedReducer,
+  dj_sublist: djSublistReducer,
+  djDetail: djDetailListReducer
 });

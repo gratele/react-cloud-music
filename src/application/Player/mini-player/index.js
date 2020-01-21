@@ -42,7 +42,17 @@ function MiniPlayer(props) {
             <img
               className={`play ${playing ? "" : "pause"}`}
               ref={miniImageRef}
-              src={song.al ? song.al.picUrl : song.album.picUrl}
+              src={
+                song.album
+                  ? song.album.picUrl
+                  : song.al
+                  ? song.al.picUrl
+                  : song.album
+                  ? song.album.artist.img1v1Url
+                  : song.coverUrl
+                  ? song.coverUrl
+                  : ""
+              }
               width="40"
               height="40"
               alt="img"
@@ -52,7 +62,11 @@ function MiniPlayer(props) {
         <div className="text">
           <h2 className="name">{song.name}</h2>
           <p className="desc">
-            {song.ar ? getName(song.ar) : getName(song.artists)}
+            {song.album
+              ? getName(song.album.artists)
+              : song.ar
+              ? getName(song.ar)
+              : ""}
           </p>
         </div>
         <div className="control">

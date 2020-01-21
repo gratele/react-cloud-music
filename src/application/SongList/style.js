@@ -8,6 +8,12 @@ export const SongList = styled.div`
     props.showBackground
       ? `background: ${style["highlight-background-color"]}`
       : ""}
+  .sum-num {
+    height: 1rem;
+    line-height: 1rem;
+    font-weight: 700;
+    padding: 0 1rem;
+  }
   .first_line {
     box-sizing: border-box;
     padding: 10px 0;

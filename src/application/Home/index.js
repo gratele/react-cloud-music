@@ -71,7 +71,10 @@ function Home(props) {
       <List>
         {homeList.map((item, index) => {
           return (
-            <ListItem key={item.text + "" + index}>
+            <ListItem
+              key={item.text + "" + index}
+              onClick={() => handleClick(item.text)}
+            >
               <i className={`home ${item.icon}`}></i>
               <div className="wrapper">
                 <span className="list-content">{item.text}</span>

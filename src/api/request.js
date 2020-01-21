@@ -55,6 +55,10 @@ export const getLyricRequest = id => {
   return axiosInstance.get(`/lyric?id=${id}`);
 };
 
+export const getSongUrlRequest = id => {
+  return axiosInstance.get(`/song/url?id=${id}`);
+};
+
 export const loginByPhoneRequest = (phone, password) => {
   return axiosInstance.get(
     `/login/cellphone?phone=${phone}&password=${password}`
@@ -89,4 +93,16 @@ export const getRecordListRequest = (uid = 0, type = 0) => {
 
 export const getDateRecommendRequest = () => {
   return axiosInstance.get(`/recommend/songs`);
+};
+
+export const getDjSublistRequest = () => {
+  return axiosInstance.get(`/dj/sublist`);
+};
+
+export const getDjDetailRequest = id => {
+  return axiosInstance.get(`dj/detail?rid=${id}`);
+};
+
+export const getDjProgramRequest = (id, limit = 30) => {
+  return axiosInstance.get(`/dj/program?rid=${id}&limit=${limit}`);
 };

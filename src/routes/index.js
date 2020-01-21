@@ -118,6 +118,24 @@ const RecentlyPlayed = props => {
   );
 };
 
+const DjSublistComponent = lazy(() => import("./../application/DjSublist"));
+const DjSublist = props => {
+  return (
+    <Suspense fallback={null}>
+      <DjSublistComponent {...props}></DjSublistComponent>
+    </Suspense>
+  );
+};
+
+const DjDetailComponent = lazy(() => import("./../application/djDetail"));
+const DjDetail = props => {
+  return (
+    <Suspense fallback={null}>
+      <DjDetailComponent {...props}></DjDetailComponent>
+    </Suspense>
+  );
+};
+
 export default [
   {
     component: BlankLayout,
@@ -166,9 +184,18 @@ export default [
           },
           {
             path: "/recently",
-            exact: true,
             key: "recently",
             component: RecentlyPlayed
+          },
+          {
+            path: "/dj_sublist",
+            key: "dj_sublist",
+            component: DjSublist
+          },
+          {
+            path: "/djDetail/:id",
+            key: "djDetail",
+            component: DjDetail
           },
           {
             path: "/",
@@ -209,13 +236,11 @@ export default [
               },
               {
                 path: "/album/:id",
-                exact: true,
                 key: "album",
                 component: Album
               },
               {
                 path: "/search",
-                exact: true,
                 key: "search",
                 component: Search
               }

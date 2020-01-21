@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Container } from "./style";
 import Header from "../../baseUI/header/index";
-import { ImgWrapper, CollectButton, SongListWrapper, BgLayer } from "./style";
+import {
+  Container,
+  ImgWrapper,
+  CollectButton,
+  SongListWrapper,
+  BgLayer
+} from "./style";
 import Scroll from "../../baseUI/scroll/index";
 import { HEADER_HEIGHT } from "./../../api/config";
 import { getSingerInfo } from "./store/actionCreators";

@@ -1,6 +1,6 @@
-import React from 'react';
-import { TopDesc, Menu } from './style';
-import SongsList from '../../application/SongList/';
+import React from "react";
+import { TopDesc, Menu } from "./style";
+import SongsList from "../../application/SongList/";
 
 function AlbumDetail(props) {
   const { currentAlbum, pullUpLoading } = props;
@@ -13,23 +13,25 @@ function AlbumDetail(props) {
         </div>
         <div className="img_wrapper">
           <div className="decorate"></div>
-          <img src={currentAlbum.coverImgUrl} alt=""/>
+          <img src={currentAlbum.coverImgUrl} alt="" />
           <div className="play_count">
             <i className="iconfont play">&#xe885;</i>
-            <span className="count">{Math.floor(currentAlbum.subscribedCount/1000)/10}万</span>
+            <span className="count">
+              {Math.floor(currentAlbum.subscribedCount / 1000) / 10}万
+            </span>
           </div>
         </div>
         <div className="desc_wrapper">
           <div className="title">{currentAlbum.name}</div>
           <div className="person">
             <div className="avatar">
-              <img src={currentAlbum.creator.avatarUrl} alt=""/>
+              <img src={currentAlbum.creator.avatarUrl} alt="" />
             </div>
             <div className="name">{currentAlbum.creator.nickname}</div>
           </div>
         </div>
       </TopDesc>
-    )
+    );
   };
 
   const renderMenu = () => {
@@ -52,7 +54,7 @@ function AlbumDetail(props) {
           更多
         </div>
       </Menu>
-    )
+    );
   };
   const renderSongList = () => {
     return (
@@ -64,15 +66,15 @@ function AlbumDetail(props) {
         musicAnimation={props.musicAnimation}
         showBackground={true}
       ></SongsList>
-    )
+    );
   };
 
   return (
     <div>
-      { renderTopDesc() }
-      { renderMenu() }
-      { renderSongList() }
+      {renderTopDesc()}
+      {renderMenu()}
+      {renderSongList()}
     </div>
-  )
+  );
 }
 export default React.memo(AlbumDetail);

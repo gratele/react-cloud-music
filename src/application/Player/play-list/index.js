@@ -58,7 +58,13 @@ function PlayList(props) {
   } = props;
 
   const currentSong = immutableCurrentSong.toJS();
-  const playList = immutablePlayList.toJS();
+
+  let playList = immutablePlayList.toJS();
+
+  if (immutablePlayList.toJS().mainSong) {
+    playList = immutablePlayList.toJS().mainSong;
+  }
+
   const sequencePlayList = immutableSequencePlayList.toJS();
 
   const changeMode = e => {
@@ -233,7 +239,13 @@ function PlayList(props) {
               bounceTop={false}
             >
               <ListContent>
-                {playList.map((item, index) => {
+                {playList.map((item1, index) => {
+                  let item = {};
+                  if (item1.mainSong) {
+                    item = item1.mainSong;
+                  } else {
+                    item = item1;
+                  }
                   return (
                     <li
                       className="item"
