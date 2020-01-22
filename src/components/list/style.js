@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import style from '../../assets/global-style';
+import styled from "styled-components";
+import style from "../../assets/global-style";
 
 export const ListWrapper = styled.div`
   max-width: 100%;
-  .title{
+  .title {
     font-weight: 700;
     padding-left: 6px;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 60px;
     color: ${style["font-color"]};
   }
@@ -23,14 +23,14 @@ export const ListItem = styled.div`
   position: relative;
   width: 32%;
 
-  .img_wrapper{
+  .img_wrapper {
     .decorate {
       position: absolute;
       top: 0;
       width: 100%;
       height: 35px;
       border-radius: 3px;
-      background: linear-gradient(hsla(0,0%,43%,.4),hsla(0,0%,100%,0));
+      background: linear-gradient(hsla(0, 0%, 43%, 0.4), hsla(0, 0%, 100%, 0));
     }
     position: relative;
     height: 0;
@@ -42,7 +42,7 @@ export const ListItem = styled.div`
       font-size: ${style["font-size-s"]};
       line-height: 15px;
       color: ${style["font-color-light"]};
-      .play{
+      .play {
         vertical-align: top;
       }
     }
@@ -52,15 +52,26 @@ export const ListItem = styled.div`
       height: 100%;
       border-radius: 3px;
     }
+    .dj-name {
+      position: absolute;
+      bottom: 3px;
+      left: 3px;
+      color: #fff;
+      font-size: 0.2rem;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .desc {
-      overflow: hidden;
-      margin-top: 2px;
-      padding: 0 2px;
-      height: 50px;
-      text-align: left;
-      font-size: ${style["font-size-s"]};
-      line-height: 1.4;
-      color: ${style["font-color-desc"]};
-    }
+    overflow: hidden;
+    margin-top: 2px;
+    padding: 0 2px;
+    // height: 50px;
+    text-align: left;
+    font-size: ${style["font-size-s"]};
+    // line-height: 1.4;
+    color: ${style["font-color-desc"]};
+  }
 `;

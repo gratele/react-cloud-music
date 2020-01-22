@@ -11,6 +11,7 @@ import { reducer as dateRecommendReducer } from "../application/DateRecommend/st
 import { reducer as recentlyPlayedReducer } from "../application/recentlyPlayed/store/index";
 import { reducer as djSublistReducer } from "../application/DjSublist/store/index";
 import { reducer as djDetailListReducer } from "../application/djDetail/store/index";
+import { reducer as djReducer } from "../application/Dj/store/index";
 
 export default combineReducers({
   recommend: recommendReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   dateRecommend: dateRecommendReducer,
   recently: recentlyPlayedReducer,
   dj_sublist: djSublistReducer,
-  djDetail: djDetailListReducer
+  djDetail: djDetailListReducer,
+  dj: djReducer
 });

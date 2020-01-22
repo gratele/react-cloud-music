@@ -45,51 +45,6 @@ export const TabItem = styled.div`
   align-items: center;
 `;
 
-// export const NavContainer = styled.div`
-//   display: flex;
-//   justify-content: space-around;
-//   width: 100%;
-//   height: 5rem;
-//   align-items: center;
-//   width: auto;
-//   padding: 10px 0;
-// `;
-// export const ListItemIcon = styled.div`
-//   height: 100%;
-//   min-width: 5rem;
-//   display: flex;
-//   justify-content: space-around;
-//   flex-direction: column;
-//   align-items: center;
-//   color: #000;
-//   .list {
-//     .icon {
-//       width: 3rem;
-//       height: 3rem;
-//       line-height: 3rem;
-//       border-radius: 50%;
-//       text-align: center;
-//       position: relative;
-//       color: #fff;
-//       background: linear-gradient(to right, #ff5a4c, #ff1d11);
-//       .home {
-//         font-size: 25px;
-//       }
-//     }
-//     .icon-text {
-//       font-size: 13px;
-//     }
-//   }
-// .icon-list:last-of-type {
-//   .icon {
-//     .home {
-//       background: #ccc;
-//       color: gray;
-//     }
-//   }
-// }
-// `;
-
 export const NavContainer = styled.div`
   box-sizing: border-box;
   margin-top: 10px;

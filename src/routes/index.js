@@ -136,6 +136,15 @@ const DjDetail = props => {
   );
 };
 
+const DjComponent = lazy(() => import("./../application/Dj"));
+const Dj = props => {
+  return (
+    <Suspense fallback={null}>
+      <DjComponent {...props}></DjComponent>
+    </Suspense>
+  );
+};
+
 export default [
   {
     component: BlankLayout,
@@ -196,6 +205,11 @@ export default [
             path: "/djDetail/:id",
             key: "djDetail",
             component: DjDetail
+          },
+          {
+            path: "/dj",
+            key: "dj",
+            component: Dj
           },
           {
             path: "/",

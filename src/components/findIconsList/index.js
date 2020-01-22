@@ -3,16 +3,16 @@ import { NavContainer, List, ListItem } from "./style";
 import { getCount } from "../../api/utils";
 import LazyLoad from "react-lazyload";
 import { withRouter } from "react-router-dom";
-import { findIcons } from "../../api/config";
 
 export const findIconsList = props => {
+  const { iconsList } = props;
   const enterDetail = linkTo => {
     props.history.push(linkTo);
   };
 
   return (
     <NavContainer>
-      {findIcons.map((item, index) => {
+      {iconsList.map((item, index) => {
         return (
           <ListItem
             key={item.text + "" + index}

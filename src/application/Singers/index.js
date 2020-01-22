@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import Horizen from '../../baseUI/horizen-item/index';
-import { categoryTypes, alphaTypes } from '../../api/config';
+import React, { useRef, useEffect } from "react";
+import Horizen from "../../baseUI/horizen-item/index";
+import { categoryTypes, alphaTypes } from "../../api/config";
 import {
   NavContainer,
   ListContainer,
@@ -8,22 +8,48 @@ import {
   ListItem,
   EnterLoading
 } from "./style";
-import { connect } from 'react-redux';
-import { getSingerList, changeCategory, changeAlpha, getHotSingerList, changeEnterLoading, changePageCount, refreshMoreSingerList, changePullUpLoading, changePullDownLoading, refreshMoreHotSingerList } from './store/actionCreators';
+import { connect } from "react-redux";
+import {
+  getSingerList,
+  changeCategory,
+  changeAlpha,
+  getHotSingerList,
+  changeEnterLoading,
+  changePageCount,
+  refreshMoreSingerList,
+  changePullUpLoading,
+  changePullDownLoading,
+  refreshMoreHotSingerList
+} from "./store/actionCreators";
 import Scroll from "../../baseUI/scroll/index";
-import LazyLoad, { forceCheck } from 'react-lazyload';
-import Loading from '../../baseUI/loading-v2/index';
-import { renderRoutes } from 'react-router-config';
-import { withRouter } from 'react-router-dom';
-import Header from './../../baseUI/header2/index';
+import LazyLoad, { forceCheck } from "react-lazyload";
+import Loading from "../../baseUI/loading-v2/index";
+import { renderRoutes } from "react-router-config";
+import { withRouter } from "react-router-dom";
+import Header from "./../../baseUI/header2/index";
 
 function Singers(props) {
   const scrollRef = useRef(null);
   const headerEl = useRef();
 
-  const { singerList, category, alpha, pageCount, songsCount, pullUpLoading, pullDownLoading, enterLoading } = props;
+  const {
+    singerList,
+    category,
+    alpha,
+    pageCount,
+    songsCount,
+    pullUpLoading,
+    pullDownLoading,
+    enterLoading
+  } = props;
 
-  const { getHotSinger, updateCategory, updateAlpha, pullUpRefresh, pullDownRefresh } = props;
+  const {
+    getHotSinger,
+    updateCategory,
+    updateAlpha,
+    pullUpRefresh,
+    pullDownRefresh
+  } = props;
 
   useEffect(() => {
     if (!singerList.length && !category && !alpha) {
@@ -32,25 +58,25 @@ function Singers(props) {
     // eslint-disable-next-line
   }, []);
 
-  const enterDetail = (id) => {
+  const enterDetail = id => {
     props.history.push(`/singers/${id}`);
   };
 
   const handlePullUp = () => {
-    pullUpRefresh(category === '', pageCount);
+    pullUpRefresh(category === "", pageCount);
   };
 
   const handlePullDown = () => {
     pullDownRefresh(category, pageCount);
   };
 
-  const handleUpdateCategory = (newVal) => {
+  const handleUpdateCategory = newVal => {
     if (category === newVal) return;
     updateCategory(newVal);
     scrollRef.current.refresh();
   };
 
-  const handleUpdateAlpha = (newVal) => {
+  const handleUpdateAlpha = newVal => {
     if (alpha === newVal) return;
     updateAlpha(newVal);
     scrollRef.current.refresh();
@@ -61,30 +87,64 @@ function Singers(props) {
 
     return (
       <List>
-        {
-          singerList.toJS().map((item, index) => {
-            return (
-              <ListItem key={item.accountId + "" + index} onClick={() => enterDetail(item.id)}>
-                <div className="img_wrapper">
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="music" />}>
-                    <img src={`${item.picUrl}?param=300x300`} width="100%" height="100%" alt="music" />
-                  </LazyLoad>
-                </div>
-                <span className="name">{item.name}</span>
-              </ListItem>
-            )
-          })
-        }
+        {singerList.toJS().map((item, index) => {
+          return (
+            <ListItem
+              key={item.accountId + "" + index}
+              onClick={() => enterDetail(item.id)}
+            >
+              <div className="img_wrapper">
+                <LazyLoad
+                  placeholder={
+                    <img
+                      width="100%"
+                      height="100%"
+                      src={require("./singer.png")}
+                      alt="music"
+                    />
+                  }
+                >
+                  <img
+                    src={`${item.picUrl}?param=300x300`}
+                    width="100%"
+                    height="100%"
+                    alt="music"
+                  />
+                </LazyLoad>
+              </div>
+              <span className="name">{item.name}</span>
+            </ListItem>
+          );
+        })}
       </List>
-    )
+    );
   };
   return (
     <div>
       {/* 对于better-scroll来讲，其作用的元素外面必须要有一个尺寸确定的容器包裹，因此设置xxxContainer */}
       <NavContainer>
-        <Header ref={headerEl} title="歌单" isMarquee={false} handleClick={() =>{props.history.goBack()}}> </Header>
-        <Horizen title={"分类(默认热门):"} list={categoryTypes} handleClick={(v) => handleUpdateCategory(v)} oldVal={category}></Horizen>
-        <Horizen title={"首字母:"} list={alphaTypes} handleClick={(v) => handleUpdateAlpha(v)} oldVal={alpha}></Horizen>
+        <Header
+          ref={headerEl}
+          title="歌单"
+          isMarquee={false}
+          handleClick={() => {
+            props.history.goBack();
+          }}
+        >
+          {" "}
+        </Header>
+        <Horizen
+          title={"分类(默认热门):"}
+          list={categoryTypes}
+          handleClick={v => handleUpdateCategory(v)}
+          oldVal={category}
+        ></Horizen>
+        <Horizen
+          title={"首字母:"}
+          list={alphaTypes}
+          handleClick={v => handleUpdateAlpha(v)}
+          oldVal={alpha}
+        ></Horizen>
       </NavContainer>
       <ListContainer play={songsCount}>
         <Scroll
@@ -99,23 +159,27 @@ function Singers(props) {
         </Scroll>
       </ListContainer>
       {/* 入场加载动画 */}
-      {enterLoading ? <EnterLoading><Loading></Loading></EnterLoading> : null}
+      {enterLoading ? (
+        <EnterLoading>
+          <Loading></Loading>
+        </EnterLoading>
+      ) : null}
       {renderRoutes(props.route.routes)}
     </div>
-  )
+  );
 }
-const mapStateToProps = (state) => ({
-  alpha: state.getIn(['singers', 'alpha']),
-  category: state.getIn(['singers', 'category']),
-  singerList: state.getIn(['singers', 'singerList']),
-  enterLoading: state.getIn(['singers', 'enterLoading']),
-  pullUpLoading: state.getIn(['singers', 'pullUpLoading']),
-  pullDownLoading: state.getIn(['singers', 'pullDownLoading']),
-  pageCount: state.getIn(['singers', 'pageCount']),
-  songsCount: state.getIn(['player', 'playList']).size,
-  singerListErrorMessage: state.getIn(['singers', 'singerListErrorMessage'])
+const mapStateToProps = state => ({
+  alpha: state.getIn(["singers", "alpha"]),
+  category: state.getIn(["singers", "category"]),
+  singerList: state.getIn(["singers", "singerList"]),
+  enterLoading: state.getIn(["singers", "enterLoading"]),
+  pullUpLoading: state.getIn(["singers", "pullUpLoading"]),
+  pullDownLoading: state.getIn(["singers", "pullDownLoading"]),
+  pageCount: state.getIn(["singers", "pageCount"]),
+  songsCount: state.getIn(["player", "playList"]).size,
+  singerListErrorMessage: state.getIn(["singers", "singerListErrorMessage"])
 });
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getHotSinger() {
       dispatch(getHotSingerList());
@@ -146,13 +210,16 @@ const mapDispatchToProps = (dispatch) => {
     pullDownRefresh(category, alpha) {
       dispatch(changePullDownLoading(true));
       dispatch(changePageCount(0));
-      if (category === '' && alpha === '') {
+      if (category === "" && alpha === "") {
         dispatch(getHotSingerList());
       } else {
         dispatch(getSingerList());
       }
     }
-  }
+  };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Singers));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Singers));

@@ -6,6 +6,8 @@ import {
   filterSetPlayCount,
   filterSetTime
 } from "../../api/utils";
+import { EnterLoading } from "../../application/Singers/style";
+import Loading from "./../../baseUI/loading-v2/index";
 
 import { connect } from "react-redux";
 import {
@@ -24,7 +26,8 @@ function DjDetail(props) {
     musicAnimation,
     changePlayListDispatch,
     changeCurrentIndexDispatch,
-    changeSequecePlayListDispatch
+    changeSequecePlayListDispatch,
+    loading
   } = props;
 
   const selectItem = (e, index) => {
@@ -145,7 +148,6 @@ function DjDetail(props) {
           <div
             className="content"
             onClick={() => {
-              console.log(133);
               changeToFirst();
             }}
           >
@@ -158,7 +160,6 @@ function DjDetail(props) {
           <div
             className="content"
             onClick={() => {
-              console.log(233);
               changeToSecond();
             }}
           >
@@ -168,23 +169,32 @@ function DjDetail(props) {
               节目
             </span>
             <span className="num">
-              {djProgramListJS ? djProgramListJS.count : 0}
+              {!loading && djProgramListJS ? djProgramListJS.count : 0}
             </span>
           </div>
         </Title>
         {active === "second" && (
-          <SongList>
-            <h1 className="sum-num ">
-              共{djProgramListJS ? djProgramListJS.count : 0}期
-            </h1>
-            <SongItem>
-              {songList(
-                djProgramListJS && djProgramListJS.programs
-                  ? djProgramListJS.programs
-                  : []
-              )}
-            </SongItem>
-          </SongList>
+          <div>
+            {!loading && (
+              <SongList>
+                <h1 className="sum-num ">
+                  共{djProgramListJS ? djProgramListJS.count : 0}期
+                </h1>
+                <SongItem>
+                  {songList(
+                    djProgramListJS && djProgramListJS.programs
+                      ? djProgramListJS.programs
+                      : []
+                  )}
+                </SongItem>
+              </SongList>
+            )}
+            {loading ? (
+              <EnterLoading style={{ zIndex: 100, top: "250px" }}>
+                <Loading></Loading>
+              </EnterLoading>
+            ) : null}
+          </div>
         )}
         {active === "first" && (
           <Detail>

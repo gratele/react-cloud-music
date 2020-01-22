@@ -5,15 +5,20 @@ import LazyLoad from "react-lazyload";
 import { withRouter } from "react-router-dom";
 
 export const RecommendList = props => {
+  const { path, recommendList } = props;
   const enterDetail = id => {
-    props.history.push(`/recommend/${id}`);
+    if (path === "recommend") {
+      props.history.push(`/recommend/${id}`);
+    } else if (path === "dj") {
+      props.history.push(`/DjDetail/${id}`);
+    }
   };
 
   return (
     <ListWrapper>
-      <h1 className="title">推荐歌单</h1>
+      <h1 className="title">{props.title}</h1>
       <List>
-        {props.recommendList.map((item, index) => {
+        {recommendList.map((item, index) => {
           return (
             <ListItem
               key={item.id + index}
@@ -38,11 +43,14 @@ export const RecommendList = props => {
                     height="100%"
                     alt="music"
                   />
+                  {/* <span className="dj-name">{item.name}</span> */}
                 </LazyLoad>
-                <div className="play_count">
-                  <i className="iconfont play">&#xe885;</i>
-                  <span className="count">{getCount(item.playCount)}</span>
-                </div>
+                {item.playCount && (
+                  <div className="play_count">
+                    <i className="iconfont play">&#xe885;</i>
+                    <span className="count">{getCount(item.playCount)}</span>
+                  </div>
+                )}
               </div>
               <div className="desc">{item.name}</div>
             </ListItem>

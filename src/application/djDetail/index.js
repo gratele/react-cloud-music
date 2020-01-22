@@ -8,8 +8,7 @@ import {
 } from "./store/actionCreators";
 import { Container } from "./style";
 import style from "../../assets/global-style";
-import { EnterLoading } from "./../Singers/style";
-import Loading from "./../../baseUI/loading-v2/index";
+
 import { CSSTransition } from "react-transition-group";
 import MusicNote from "../../baseUI/music-note/index";
 import Scroll from "../../baseUI/scroll/index";
@@ -101,14 +100,9 @@ function DjDetail(props) {
               active={active}
               limit={limit}
               musicAnimation={musicAnimation}
+              loading={enterLoading}
             ></DJDetail>
           </Scroll>
-        ) : null}
-
-        {enterLoading ? (
-          <EnterLoading style={{ zIndex: 100 }}>
-            <Loading></Loading>
-          </EnterLoading>
         ) : null}
         <MusicNote ref={musicNoteRef}></MusicNote>
       </Container>

@@ -4,7 +4,11 @@ import { GlobalStyle } from "./style";
 import { renderRoutes } from "react-router-config";
 import { IconStyle } from "./assets/iconfont/iconfont";
 import { IconHomeStyle } from "./assets/iconhome/iconhome";
-import { IconFindStyle } from "./assets/findIcons/findIcons";
+import {
+  IconFindStyle,
+  IconDjStyle,
+  IconDjPublicStyle
+} from "./assets/findIcons/findIcons";
 import { IconLoginStyle } from "./assets/loginIcons/loginIcons";
 import {
   IconDateSongStyle,
@@ -22,10 +26,12 @@ function App() {
         <GlobalStyle></GlobalStyle>
         <IconStyle></IconStyle>
         <IconHomeStyle></IconHomeStyle>
+        <IconDjStyle></IconDjStyle>
         <IconFindStyle></IconFindStyle>
         <IconLoginStyle></IconLoginStyle>
         <IconDateSongStyle></IconDateSongStyle>
         <IconDjSublistStyle></IconDjSublistStyle>
+        <IconDjPublicStyle></IconDjPublicStyle>
         {renderRoutes(routes)}
       </HashRouter>
     </Provider>

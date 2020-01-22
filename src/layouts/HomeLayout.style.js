@@ -6,10 +6,10 @@ export const Top = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 5px 10px;
-  background: ${style["theme-color"]};
+  // background: ${style["theme-color"]};
   & > span {
     line-height: 40px;
-    color: #f1f1f1;
+    color: #999;
     font-size: 14px;
     padding-right: 30px;
     &.iconfont {
@@ -25,8 +25,8 @@ export const Top = styled.div`
       span {
         padding: 3px 0;
         font-weight: 700;
-        color: #f1f1f1;
-        border-bottom: 2px solid #f1f1f1;
+        color: #333;
+        // border-bottom: 2px solid #333;
       }
     }
   }
@@ -60,4 +60,5 @@ export const TabItem = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: #999;
 `;
